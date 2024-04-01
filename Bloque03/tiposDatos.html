@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tipos de datos</title>
+  </head>
+  <body>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-color: indigo;
+        color: white;
+      }
+    </style>
+    <div class="container">
+      <h1>Visita la consola...</h1>
+    </div>
+    <script>
+      // Variable no inicialida
+      let miVariable;
+      // Variable de tipo string
+      miVariable = "Alejandro";
+
+      // Variable de tipo entero
+      let miVariableNumero = 45;
+
+      // Mi variable de valor booleano
+      let miVariableBool = 5 > 100;
+
+      // Variable de conjuntos de datos
+      let persona = [1,2,3,3,[100,121,45]]
+
+      // Imprime el resultado en una consola
+      console.log(
+        `Hola, ¿Como estas ${miVariable} buen dia, el numero es ${miVariableNumero}la variable bool es: ${miVariableBool}, la poscion del numero 3 en la variable de conjunto de datos es: ${persona[4][2]}`
+      );
+    </script>
+  </body>
+</html>
