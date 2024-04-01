@@ -7,6 +7,42 @@
     <title>Bloque 03</title>
   </head>
   <body>
+    <style>
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+
+      .container__content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+
+      .btn__saludar {
+        background-color: #dc143c;
+        color: whitesmoke;
+        border: none;
+        border-radius: 10px;
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all ease-in-out 200ms;
+      }
+
+      .btn__saludar:hover {
+        background-color: #a81734;
+        color: #e3e3e3;
+        transform: scale(1.1);
+      }
+
+      .icon {
+        margin-right: 15px;
+      }
+    </style>
     <div class="container__one">
       <div class="container__content">
         <button onclick="saludar()" class="btn__saludar">
@@ -35,6 +71,10 @@
         </button>
       </div>
     </div>
-    <script src="/Bloque03/main.js"></script>
+    <script>
+      function saludar() {
+        alert("Hola mundo desde JavaScript");
+      }
+    </script>
   </body>
 </html>

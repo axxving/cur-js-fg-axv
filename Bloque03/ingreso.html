@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ingreso de usuario</title>
+  </head>
+  <body>
+    
+    <!-- Contenedor-->
+    <div class="container">
+      <!--Ayuda al usuario-->
+      <p>Ingresa tu nombre:</p>
+      <!--Input o ingreso de informacion del usuairo-->
+      <input id="nombreUsuario" type="text" />
+      <!--Boton que realiza la accion-->
+      <button onclick="saludar()">Saludar</button>
+    </div>
+
+    <!--Script-->
+    <script>
+      function saludar() {
+        // Las variables que vamos a ocupar se definen dentro de la funcion que reliza la accion.
+        let nombreUsuario = document.getElementById("nombreUsuario").value;
+        // Agregamos el nombre de usuario al mensaje
+        alert("Hola que tal " + nombreUsuario);
+      }
+    </script>
+  </body>
+</html>
