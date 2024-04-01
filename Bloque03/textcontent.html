@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TextConent</title>
+  </head>
+  <body>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+      body {
+        background-color: #3386d8;
+        color: azure;
+        font-family: "Roboto", sans-serif;
+      }
+
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+
+      .card {
+        background-color: #4e42ff;
+        padding: 15px;
+        border-radius: 15px;
+        width: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        box-shadow: 5px 10px 50px rgba(6, 0, 55, 0.5);
+      }
+
+      button {
+        margin-top: 1.5rem;
+        border: none;
+        padding: 1rem;
+        background-color: #31c1ff;
+        color: aliceblue;
+        border-radius: 1rem;
+      }
+
+      input {
+        border: none;
+        padding: 15px;
+        width: 80%;
+        border-radius: 1rem;
+      }
+    </style>
+
+    <div class="container">
+      <div class="card">
+        <h2>Ingresa tu nombre</h2>
+        <input type="text" id="nombreUsuario" />
+        <h2>Ingresa tu edad:</h2>
+        <input type="number" id="edadUsuario" />
+        <button onclick="mostrarInformacion()">Mostrar información</button>
+        <h2 id="salida">Aqui va tu nombre</h2>
+      </div>
+    </div>
+
+    <script>
+      // Definiendo las variables
+
+      // edad
+      let elementoEdad;
+      // nombre
+      let elementoNombre;
+      //salida
+      let elementoTexto;
+      // mensaje completo
+      let mensaje = "";
+
+      // Funcion que cambia los valores de las variables por la informacion que el usuario ingresa
+      function ingresarInformacion() {
+        // edad
+        elementoEdad = document.getElementById("edadUsuario").value;
+        // Nombre
+        elementoNombre = document.getElementById("nombreUsuario").value;
+        // Salida
+        elementoTexto = document.getElementById("salida");
+        // Mensaje completo
+        mensaje =
+          "Tu te llamas " +
+          elementoNombre +
+          " y tienes " +
+          elementoEdad +
+          " años.";
+      }
+
+      // Funcion que muestra la información
+      function mostrarInformacion() {
+        // Llamando a la funcion que cambio los valores de las variables
+        ingresarInformacion();
+        // Cambiando el valor del html por el de los datos que ingreso el usuario
+        elementoTexto.textContent = mensaje;
+      }
+    </script>
+  </body>
+</html>
