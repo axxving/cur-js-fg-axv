@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bloque 03 | Variables</title>
+  </head>
+  <body>
+    <!--?Estilos-->
+    <style></style>
+
+    <!--*Contenedor-->
+    <div class="container">
+      <!--Ayuda al usuario-->
+      <p>Ingresa tu nombre:</p>
+      <!--Input o ingreso de informacion del usuairo-->
+      <input id="nombreUsuario" type="text" />
+      <!--Boton que realiza la accion-->
+      <button onclick="saludar()">Saludar</button>
+    </div>
+
+    <!--TODO Codigo-->
+    <script>
+      function saludar() {
+        let nombreUsuario = document.getElementById("nombreUsuario").value;
+        alert("Hola que tal " + nombreUsuario);
+      }
+
+      // Una variable sin contenido
+      // No puede haber dos variables con el mismo nombre, declaradas
+      // Se pueden sobreescribir las variables, es decir, cambiar el valor de una variable ya declara, excepto en la variable const
+
+      // Varibale con un tipo de dato de cadena
+      let miNombre = "Alejandro";
+      // Variable con un tipo de dato de número
+      let miEdad = 24;
+
+      // Tipo antigua de delcaracion de variable
+      var tipoVar;
+
+      // Tipo let, nuevo estandard
+      let tipoLet;
+
+      // Necesitan ser inicialidas
+      // No pueden cambiar
+      const tipoConstante = 0;
+
+      // Alert que muestra el saludo al usuario
+      alert("Mi nombre " + miNombre + "Mi edad: " + miEdad);
+    </script>
+  </body>
+</html>
