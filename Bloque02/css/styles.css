@@ -25,7 +25,7 @@ html {
 /*?Header*/
 header {
   background-color: var(--blanco);
-  padding: 15px;
+  padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -40,4 +40,87 @@ header {
 
 .nav__link:hover {
   color: var(--rosa);
+}
+
+/*? Titulo*/
+.container__titulo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+/*? Main*/
+.container__main {
+  background-color: var(--blanco);
+  .container__seccion {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem;
+    .container__imagen {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container__content {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+  }
+}
+
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+  /* body {
+    Para comentar todo un bloque de codigo presiona las teclas ctrl + k + c
+    background-color: red;
+  } */
+
+  .container__main {
+    .container__seccion {
+      flex-direction: column;
+      .container__imagen {
+        width: 100%;
+      }
+      .container__content {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        width: 100%;
+      }
+    }
+  }
+}
+
+/* Small devices (phones, 576px and up) */
+@media (min-width: 576px) {
+  body {
+    background-color: orange;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  body {
+    background-color: yellow;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  body {
+    background-color: green;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  body {
+    background-color: blue;
+  }
 }
