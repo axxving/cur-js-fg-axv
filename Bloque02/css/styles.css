@@ -129,6 +129,34 @@ footer {
   }
 }
 
+/*? Contacto*/
+.container__contacto {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  .container-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .container__content {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    .container-icons {
+      margin-top: 1rem;
+      .contacto-icon {
+        color: var(--salmon);
+        font-size: 1.5rem;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
 /* Extra small devices (phones, less than 576px) */
 @media (max-width: 575.98px) {
   /* body {
@@ -169,13 +197,28 @@ footer {
       text-align: center;
     }
   }
+
+  .container__contacto {
+    flex-direction: column;
+    .container-img {
+    }
+
+    .container__content {
+      margin-top: 1rem;
+      text-align: center;
+      align-items: center;
+      .container-icons {
+        margin-top: 1rem;
+      }
+    }
+  }
 }
 
 /* Small devices (phones, 576px and up) */
 @media (min-width: 576px) {
-  body {
+  /* body {
     background-color: orange;
-  }
+  } */
 }
 
 /* Medium devices (tablets, 768px and up) */
