@@ -36,7 +36,7 @@
       // Funcion que calcula el tiempo
       function comenzarTiempo() {
         // Cambiando el tiempo segun a lo que ingrese el usuario
-        setTimeout(tiempoCumplido, 1000 * tiempoUsuario.value);
+        setTimeout(tiempoCumplido, 1000 * 30);
       }
 
       // Funcion que se dispara cuando el tiempo ya se cumplio
@@ -54,13 +54,19 @@
 
       // Definimos la funcion que asigna los valores al reloj
       function tikTak() {
+        // Declaramos la variable que se encarga del tiempo
         let tiempoActual = new Date();
+        // Declaramos el valor de Hora
         let hora = String(tiempoActual.getHours()).padStart(2, "0");
+        // Declaramos el valor de minutos
         let minutos = String(tiempoActual.getMinutes()).padStart(2, "0");
+        // Declaramos el valor de segundos
         let segundos = String(tiempoActual.getSeconds()).padStart(2, "0");
 
+        // le damos el formato deseado a una variable
         let textoHora = hora + ":" + minutos + ":" + segundos;
 
+        // Cambiamos el valor del contenido del html por el formato que hicimos
         textoCambiante.textContent = textoHora;
       }
 

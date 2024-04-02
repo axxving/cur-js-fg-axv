@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proyecto Dia - 03</title>
+  </head>
+  <body>
+    <h1>Juego de los 30</h1>
+    <br />
+    <h2 id="cronometroHTML">00</h2>
+    <br />
+    <p>¿Cuando es dos mas dos?</p>
+    <br />
+    <input type="text" id="pregunta01" /><br />
+    <p>¿Que dia es hoy?</p>
+    <br />
+    <input type="text" id="pregunta02" /><br />
+    <p>¿Cuanto es 1000 x 2000</p>
+    <br />
+    <input type="text" id="pregunta03" /><br />
+    <p>¿Como se llama tu papa?</p>
+    <br />
+    <input type="text" name="" id="pregunta04" /><br />
+    <p>¿A quien mas amas en este mundo?</p>
+    <br />
+    <input type="text" id="pregunta05" /><br />
+
+    <button onclick="volverComenzar()">Volver a comenzar</button>
+    <button onclick="comenzar()">Comenzar</button>
+    <button onclick="terminar()">Terminar</button>
+
+    <script>
+      // Tiempo limite del usuario
+      let tiempoLimite = 31;
+      // Elemento HTML que se va actualizando
+      let cronometro = document.getElementById("cronometroHTML");
+
+      // Respuestas del usuario
+      let respuesta01 = document.getElementById("pregunta01");
+      let respuesta02 = document.getElementById("pregunta02");
+      let respuesta03 = document.getElementById("pregunta03");
+      let respuesta04 = document.getElementById("pregunta04");
+      let respuesta05 = document.getElementById("pregunta05");
+
+      //Funcion que comienza el juego
+      function comenzar() {
+        if (tiempoLimite <= 0) {
+          alert("El tiempo ya se termino.");
+          alert(`Que mal!, aqui estan tus respuestas:
+       01 - ${respuesta01.value},
+       02 - ${respuesta02.value},
+       03 - ${respuesta03.value},
+       04 - ${respuesta04.value},
+       05 - ${respuesta05.value},
+        `);
+        } else {
+          // El tiempo se va disminuyendo
+          tiempoLimite--;
+          setTimeout(comenzar, 1000);
+          cronometro.textContent = tiempoLimite;
+        }
+      }
+
+      // Funcion que vuelve a iniciar un juego
+      function volverComenzar() {
+        location.reload();
+      }
+
+      // Funcion que se ejecuta cuando el usaurio termina
+      function terminar() {
+        cronometro = 0;
+        alert(`Bien hecho!, aqui estan tus respuestas:
+       01 - ${respuesta01.value},
+       02 - ${respuesta02.value},
+       03 - ${respuesta03.value},
+       04 - ${respuesta04.value},
+       05 - ${respuesta05.value},
+       La fecha de hoy es: ${tiktak()}
+        `);
+      }
+
+      function tiktak() {
+        // Declaramos la variable que obtiene el tiempo
+        let tiempoActual = new Date();
+
+        // fecha
+        let dia = tiempoActual.getDay();
+        let mes = tiempoActual.getMonth();
+        let año = tiempoActual.getFullYear();
+
+        let fecha = dia + "/" + mes + "/" + año;
+
+        return fecha;
+      }
+    </script>
+  </body>
+</html>
