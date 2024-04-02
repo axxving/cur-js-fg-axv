@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fecha y Hora</title>
+  </head>
+  <body onload="comenzarReloj()">
+    <style>
+      h1 {
+        font-family: monospace;
+        font-size: 80px;
+      }
+    </style>
+
+    <!--Input para elegir el tiempo-->
+    <input type="number" id="elegirTiempo" />
+    <!--Boton que inicia el tiempo-->
+    <button onclick="comenzarTiempo()">Comenzar</button>
+    <!--Agregando la etiqueta audio-->
+    <audio id="sonido">
+      <source src="/Bloque03/assets/alarma.mp3" type="audio/mpeg" />
+      No se reprodujo el sonido
+    </audio>
+
+    <!--Elemento HTML que cambiara cuando el tiempo llegue a su fin-->
+    <h1 id="textoCambiante">00:00:00</h1>
+    <script>
+      // Tiempo que eligio el usuario
+      let tiempoUsuario = document.getElementById("elegirTiempo");
+      // Texto que va a cambiar cuando el tiempo termine
+      let textoCambiante = document.getElementById("textoCambiante");
+      // Variable que contiene el sonido
+      let sonidoAlarma = document.getElementById("sonido");
+
+      // Funcion que calcula el tiempo
+      function comenzarTiempo() {
+        // Cambiando el tiempo segun a lo que ingrese el usuario
+        setTimeout(tiempoCumplido, 1000 * tiempoUsuario.value);
+      }
+
+      // Funcion que se dispara cuando el tiempo ya se cumplio
+      function tiempoCumplido() {
+        // Aviso de que el tiempo se termino
+        alert("Se acabo el tiempo.");
+        // Cambiando el contenido del texto
+        textoCambiante.textContent = "Encendido";
+        // Canbiando el color
+        textoCambiante.style.color = "green";
+
+        // Reproduciondo el sonido
+        sonidoAlarma.play();
+      }
+
+      // Definimos la funcion que asigna los valores al reloj
+      function tikTak() {
+        let tiempoActual = new Date();
+        let hora = String(tiempoActual.getHours()).padStart(2, "0");
+        let minutos = String(tiempoActual.getMinutes()).padStart(2, "0");
+        let segundos = String(tiempoActual.getSeconds()).padStart(2, "0");
+
+        let textoHora = hora + ":" + minutos + ":" + segundos;
+
+        textoCambiante.textContent = textoHora;
+      }
+
+      // Creando la funcion que hace que el relojo comience y vaya funcionando todo el tiempo
+      function comenzarReloj() {
+        // Establecer un intervalo
+        // Primero llama a la funcion
+        // Luego establece cada que tiempo la va a estar llamando
+        setInterval(tikTak, 1000);
+      }
+    </script>
+  </body>
+</html>
