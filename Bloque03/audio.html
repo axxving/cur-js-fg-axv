@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temporizador</title>
+  </head>
+  <body>
+    <!--Input para elegir el tiempo-->
+    <input type="number" id="elegirTiempo" />
+    <!--Boton que inicia el tiempo-->
+    <button onclick="comenzarTiempo()">Comenzar</button>
+    <!--Agregando la etiqueta audio-->
+    <audio id="sonido">
+      <source src="/Bloque03/assets/alarma.mp3" type="audio/mpeg" />
+      No se reprodujo el sonido
+    </audio>
+
+    <br />
+
+    <audio controls>
+      <source src="/Bloque03/assets/alarma.mp3" type="audio/mpeg" />
+      No se reprodujo el sonido
+    </audio>
+
+    <!--Elemento HTML que cambiara cuando el tiempo llegue a su fin-->
+    <h1 id="textoCambiante" style="color: red">APAGADO</h1>
+    <script>
+      // Tiempo que eligio el usuario
+      let tiempoUsuario = document.getElementById("elegirTiempo");
+      // Texto que va a cambiar cuando el tiempo termine
+      let textoCambiante = document.getElementById("textoCambiante");
+      // Variable que contiene el sonido
+      let sonidoAlarma = document.getElementById("sonido");
+
+      // Funcion que calcula el tiempo
+      function comenzarTiempo() {
+        // Cambiando el tiempo segun a lo que ingrese el usuario
+        setTimeout(tiempoCumplido, 1000 * tiempoUsuario.value);
+      }
+
+      // Funcion que se dispara cuando el tiempo ya se cumplio
+      function tiempoCumplido() {
+        // Aviso de que el tiempo se termino
+        alert("Se acabo el tiempo.");
+        // Cambiando el contenido del texto
+        textoCambiante.textContent = "Encendido";
+        // Canbiando el color
+        textoCambiante.style.color = "green";
+
+        // Reproduciondo el sonido
+        sonidoAlarma.play();
+      }
+    </script>
+  </body>
+</html>
