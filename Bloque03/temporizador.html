@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temporizador</title>
+  </head>
+  <body>
+    <!--Input para elegir el tiempo-->
+    <input type="number" id="elegirTiempo" />
+    <!--Boton que inicia el tiempo-->
+    <button onclick="comenzarTiempo()">Comenzar</button>
+
+    <!--Elemento HTML que cambiara cuando el tiempo llegue a su fin-->
+    <h1 id="textoCambiante" style="color: red">APAGADO</h1>
+    <script>
+      // Tiempo que eligio el usuario
+      let tiempoUsuario = document.getElementById("elegirTiempo");
+      // Texto que va a cambiar cuando el tiempo termine
+      let textoCambiante = document.getElementById("textoCambiante");
+
+      // Funcion que se dispara cuando el tiempo ya se cumplio
+      function tiempoCumplido() {
+        // Aviso de que el tiempo se termino
+        alert("Se acabo el tiempo.");
+        // Cambiando el contenido del texto
+        textoCambiante.textContent = "Encendido";
+        // Canbiando el color
+        textoCambiante.style.color = "green";
+      }
+
+      // Funcion que calcula el tiempo
+      function comenzarTiempo() {
+        // Cambiando el tiempo segun a lo que ingrese el usuario
+        setTimeout(tiempoCumplido, 1000 * tiempoUsuario.value);
+      }
+    </script>
+  </body>
+</html>
