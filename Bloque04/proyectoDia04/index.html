@@ -20,7 +20,7 @@
         gap: 15px;
         padding: 1rem;
         display: grid;
-        width: 500px;
+        min-width: 50%;
         margin: 0 auto;
         grid-template-areas:
           "input1 input1 input2 input2"
@@ -98,7 +98,7 @@
       let respuesta = document.getElementById("respuesta");
 
       function suma() {
-        resultado = parseInt(numero1.value) + parseInt(numero2.value);
+        resultado = parseFloat(numero1.value) + parseFloat(numero2.value);
         respuesta.textContent = resultado;
       }
 
@@ -115,6 +115,51 @@
       function div() {
         resultado = parseInt(numero1.value) / parseInt(numero2.value);
         respuesta.textContent = resultado;
+      }
+
+      function raiz() {
+        let respuestaRaiz = Math.sqrt(numero1.value, numero2.value);
+        respuesta.textContent = respuestaRaiz;
+      }
+
+      function potencia() {
+        let respuestaPotencia = Math.pow(numero1.value, numero2.value);
+        respuesta.textContent = respuestaPotencia;
+      }
+
+      function valor(num1, num2) {
+        num1 = parseInt(numero1.value);
+        num2 = parseInt(numero2.value);
+        let valor = num1 + num2;
+        let respuestaValor = Math.abs(valor);
+        respuesta.textContent = respuestaValor;
+      }
+
+      function random(maximo, minimo) {
+        maximo = parseInt(numero1.value);
+        minimo = parseInt(numero2.value);
+        let respuestaRandom = Math.floor(
+          Math.random() * (maximo - minimo + minimo)
+        );
+        respuesta.textContent = respuestaRandom;
+      }
+
+      function round() {
+        let resultadoNumerico = parseFloat(respuesta.textContent);
+        let respuestaRound = Math.round(resultadoNumerico);
+        respuesta.textContent = respuestaRound;
+      }
+
+      function floor() {
+        let resultadoNumerico = parseFloat(respuesta.textContent);
+        let respuestaFloor = Math.floor(resultadoNumerico);
+        respuesta.textContent = respuestaFloor;
+      }
+
+      function ceil() {
+        let resultadoNumerico = parseFloat(respuesta.textContent);
+        let respuestaCeil = Math.ceil(resultadoNumerico);
+        respuesta.textContent = respuestaCeil;
       }
     </script>
   </body>
