@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booleanos</title>
+  </head>
+  <body>
+    <style></style>
+
+    <div class="container">
+      <p>Ingrese su edad:</p>
+      <input type="number" id="edad" />
+      <button onclick="calcular()">Enviar</button>
+
+      <h3>Puede beber alcohol?</h3>
+      <p id="respuesta1">---</p>
+
+      <h3>Puede ingresar a la fiesta?</h3>
+      <p id="respuesta2">---</p>
+
+      <h3>Tiene entrada gratis?</h3>
+      <p id="respuesta3">---</p>
+    </div>
+
+    <script>
+      function calcular() {
+        let respuesta01 = document.getElementById("respuesta1");
+        let respuesta02 = document.getElementById("respuesta2");
+        let respuesta03 = document.getElementById("respuesta3");
+
+        let elementoEdad = document.getElementById("edad");
+        let edad = elementoEdad.value;
+
+        let puedeBeber = edad >= 18;
+        respuesta01.textContent = puedeBeber;
+
+        let ingresa = edad >= 18 && edad <= 30;
+        respuesta02.textContent = ingresa;
+
+        let gratis = edad == 20 || edad == 25;
+        respuesta03.textContent = gratis;
+      }
+    </script>
+  </body>
+</html>
