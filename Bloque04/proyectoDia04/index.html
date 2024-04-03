@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora</title>
+  </head>
+  <body>
+    <style>
+      body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .calculadora {
+        background-color: chartreuse;
+        border-radius: 10px;
+        gap: 15px;
+        padding: 1rem;
+        display: grid;
+        width: 500px;
+        margin: 0 auto;
+        grid-template-areas:
+          "input1 input1 input2 input2"
+          "suma resta multiplicacion divicion"
+          "raiz potencia valor random"
+          "round floor ceil respuesta";
+      }
+
+      button {
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+        transition: all ease-in-out 200ms;
+        &:hover {
+          background-color: #2cca00;
+          color: #ffffff;
+        }
+      }
+
+      input {
+        padding: 10px;
+        border-radius: 10px;
+        outline: none;
+        border: none;
+      }
+
+      .input1 {
+        grid-area: input1;
+      }
+
+      .input2 {
+        grid-area: input2;
+      }
+
+      .suma {
+        grid-area: suma;
+      }
+
+      .resta {
+        grid-area: resta;
+      }
+
+      .multillicacion {
+        grid-area: multiplicacion;
+      }
+
+      .divicion {
+        grid-area: divicion;
+      }
+    </style>
+
+    <div class="calculadora">
+      <input class="input1" type="number" id="numero1" />
+      <input class="input2" type="number" id="numero2" />
+
+      <button class="suma" onclick="suma()">+</button>
+      <button class="resta" onclick="resta()">-</button>
+      <button class="multillicacion" onclick="mult()">x</button>
+      <button class="divicion" onclick="div()">/</button>
+
+      <button class="raiz" onclick="raiz()">Raiz</button>
+      <button class="potencia" onclick="potencia()">Potencia</button>
+      <button class="valor" onclick="valor()">Valor absoluto</button>
+      <button class="random" onclick="random()">Random</button>
+      <button class="round" onclick="round()">Round</button>
+      <button class="floor" onclick="floor()">Floor</button>
+      <button class="ceil" onclick="ceil()">Ceil</button>
+
+      <input class="respuesta" type="number" id="respuesta" />
+    </div>
+  </body>
+</html>
