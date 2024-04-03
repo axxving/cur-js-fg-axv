@@ -89,7 +89,33 @@
       <button class="floor" onclick="floor()">Floor</button>
       <button class="ceil" onclick="ceil()">Ceil</button>
 
-      <input class="respuesta" type="number" id="respuesta" />
+      <h2 id="respuesta">00</h2>
     </div>
+
+    <script>
+      let numero1 = document.getElementById("numero1");
+      let numero2 = document.getElementById("numero2");
+      let respuesta = document.getElementById("respuesta");
+
+      function suma() {
+        resultado = parseInt(numero1.value) + parseInt(numero2.value);
+        respuesta.textContent = resultado;
+      }
+
+      function resta() {
+        resultado = parseInt(numero1.value) - parseInt(numero2.value);
+        respuesta.textContent = resultado;
+      }
+
+      function mult() {
+        resultado = parseInt(numero1.value) * parseInt(numero2.value);
+        respuesta.textContent = resultado;
+      }
+
+      function div() {
+        resultado = parseInt(numero1.value) / parseInt(numero2.value);
+        respuesta.textContent = resultado;
+      }
+    </script>
   </body>
 </html>
