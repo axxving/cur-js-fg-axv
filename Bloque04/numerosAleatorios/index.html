@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/Bloque04/numerosAleatorios/index.js"></script>
+    <title>Numeros aleatorios</title>
+  </head>
+  <body>
+    <!--Accionando la funcion con un boton-->
+    <button onclick="random(10, 15)">Numero aleatorio</button>
+    <!--Elemento HTML-->
+    <h2 id="numero"></h2>
+
+    <script>
+      // Definimos la variable que contendra el elemento HTML
+      let numeroAleatorio = document.getElementById("numero");
+
+      // Generamos la funcion que dara el número aleatorio
+      function random(minimo, maximo) {
+        maximo = maximo + 1;
+        let resultado = Math.floor(Math.random() * (maximo - minimo + minimo));
+        numeroAleatorio.textContent = resultado;
+      }
+    </script>
+  </body>
+</html>
