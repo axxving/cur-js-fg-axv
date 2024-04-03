@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Decisiones</title>
+  </head>
+  <body>
+    <style></style>
+
+    <div class="container">
+      <p>Precio de la leche</p>
+      <input type="number" id="textoPrecio" />
+      <button onclick="evaluarCompra()">Enviar</button>
+
+      <h3 id="decision">---</h3>
+    </div>
+
+    <script>
+      function evaluarCompra() {
+        let HTMLrespuesta = document.getElementById("decision");
+
+        let HTMLprecio = document.getElementById("textoPrecio");
+
+        let precio = HTMLprecio.value;
+
+        if (precio <= 5) {
+          HTMLrespuesta.textContent = "Compra dos cartones de leche.";
+        } else {
+          HTMLrespuesta.textContent = "No compres leche.";
+        }
+      }
+    </script>
+  </body>
+</html>
