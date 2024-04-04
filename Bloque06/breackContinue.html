@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Breack y Continue</title>
+  </head>
+  <body>
+    <script>
+      let array = [1, 2, 43, 55, 45, 93, 78, 56, 12, 20, 95, 45];
+
+      for (let numero of array) {
+        if (numero < 50) {
+          document.write(numero + "<br>");
+        } else {
+          break;
+        }
+      }
+
+      document.write("Esto es todo");
+
+      let array2 = [1, 2, 43, 55, 45, 93, 78, 56, 12, 20, 95, 45];
+
+      for (let numero of array2) {
+        if (numero < 50) {
+          document.write(numero + "<br>");
+        } else {
+          continue;
+          document.write("El numero es mayor a 50");
+        }
+      }
+
+      document.write("Esto es todo");
+    </script>
+  </body>
+</html>
