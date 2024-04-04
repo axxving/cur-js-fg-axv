@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proyecto dia 06</title>
+  </head>
+  <body>
+    <div class="container">
+      <!--Listamos las calificaciones-->
+      <h2>Calificaciones</h2>
+      <ul id="listaHtml"></ul>
+
+      <button onclick="promedio()">Promedio</button>
+      <h2 id="promedioHtml">--Promedio--</h2>
+
+      <button onclick="notaAlta()">NotaMasAlta</button>
+      <h2 id="promedioHtml">--Nota mas alta--</h2>
+      <button onclick="aplazo()">Aplazo</button>
+      <h2 id="aplazoHtml">--Aplazo--</h2>
+    </div>
+
+    <script>
+      let lista = document.getElementById("listaHtml");
+
+      // Declaramos la lista de calificaciones
+      let calificaciones = [10, 9, 3, 4, 5, 6, 7, 8, 8, 8, 6, 6, 7, 7, 7];
+
+      // Imprimimos las calificaciones en el html
+      for (let alumno of calificaciones) {
+        // Generamos un nuevo elemento li
+        let itemLista = document.createElement("li");
+        // Asigno el valor que va a mostrar que viene de la lista
+        itemLista.innerText = alumno;
+        // Lo agrego a la lista
+        lista.appendChild(itemLista);
+      }
+    </script>
+  </body>
+</html>
