@@ -34,14 +34,14 @@
       let respuestaAplazo = document.getElementById("aplazoHtml");
 
       // Declaramos la lista de calificaciones
-      let calificaciones = [10, 9, 6, 4, 6];
+      let calificaciones = [10, 10, 10, 10, 10];
 
       // Imprimimos las calificaciones en el html
-      for (let alumno of calificaciones) {
+      for (let nota of calificaciones) {
         // Generamos un nuevo elemento li
         let itemLista = document.createElement("li");
         // Asigno el valor que va a mostrar que viene de la lista
-        itemLista.innerText = alumno;
+        itemLista.innerText = nota;
         // Lo agrego a la lista
         lista.appendChild(itemLista);
       }
@@ -80,9 +80,15 @@
 
       // Sacar aplazo
       function aplazo() {
-        do {
-          respuestaAplazo.textContent = "Tiene un aplazo";
-        } while (calificacion <= 4);
+        let aplazo = 0;
+
+        for (calificacion of calificaciones) {
+          if (calificacion <= 4) {
+            respuestaAplazo.textContent = "El alumno tiene un aplazo.";
+          } else {
+            respuestaAplazo.textContent = "El alumno no tiene aplazos.";
+          }
+        }
       }
     </script>
   </body>
