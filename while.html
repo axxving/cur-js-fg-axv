@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>While</title>
+  </head>
+  <body>
+    <div class="container"></div>
+
+    <script>
+      // Declaramos la variable
+      let nombre;
+
+      // Usamos while para declarar una condicion
+      while (nombre != "Fede") {
+        // Pedimos informacion al usuario hasta que cumpla con la condicion
+        nombre = prompt("Dime mi nombre", "Escribe el nombre");
+      }
+
+      // Escribimos en el HTML
+      document.write("<h2>Ese es mi nombre!</h2>");
+    </script>
+  </body>
+</html>
