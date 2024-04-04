@@ -15,13 +15,20 @@
       <h2 id="promedioHtml">--Promedio--</h2>
 
       <button onclick="notaAlta()">NotaMasAlta</button>
-      <h2 id="promedioHtml">--Nota mas alta--</h2>
+      <h2 id="notaAltaHtml">--Nota mas alta--</h2>
       <button onclick="aplazo()">Aplazo</button>
       <h2 id="aplazoHtml">--Aplazo--</h2>
     </div>
 
     <script>
+      // Lista para mostrar las calificaciones
       let lista = document.getElementById("listaHtml");
+
+      // Resultado de sacar promedio
+      let respuestaPromedio = document.getElementById("promedioHtml");
+
+      // Resultado de nota mas alta
+      let respuestaNotaAlta = document.getElementById("notaAltaHtml");
 
       // Declaramos la lista de calificaciones
       let calificaciones = [10, 9, 3, 4, 5, 6, 7, 8, 8, 8, 6, 6, 7, 7, 7];
@@ -34,6 +41,38 @@
         itemLista.innerText = alumno;
         // Lo agrego a la lista
         lista.appendChild(itemLista);
+      }
+
+      // Sacar el promedio
+      function promedio() {
+        // Variable que contiene todas las calificaciones
+        let sumaCalificaciones = 0;
+
+        // Recorremos todas las calificaciones de la lista
+        for (calificacion of calificaciones) {
+          // Vamos sumando las calificaciones y las almacenamos en una variable
+          sumaCalificaciones += calificacion;
+        }
+
+        // Total de calificaciones
+        let respuesta = sumaCalificaciones / 5;
+
+        // Imprimiendo el resultado
+        respuestaPromedio.textContent = respuesta;
+      }
+
+      // Sacar la nota mas alta
+      function notaAlta() {
+        // Inicializamos una variable
+        let notaMasAlta = 0;
+
+        for (calificacion of calificaciones) {
+          if (notaMasAlta < calificacion) {
+            notaMasAlta = calificacion;
+          }
+        }
+
+        respuestaNotaAlta.textContent = notaMasAlta;
       }
     </script>
   </body>
