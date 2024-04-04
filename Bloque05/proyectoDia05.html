@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cine</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- El usuario puede ingresar su edad -->
+      <p>Ingresa tu edad</p>
+      <input type="number" id="edadHtml" />
+
+      <!-- Opciones a elegir por el usuario-->
+      <button onclick="recomendar('drama')">Drama</button>
+      <button onclick="recomendar('familiar')">Familiar</button>
+      <button onclick="recomendar('accion')">Accion</button>
+      <button onclick="recomendar('anime')">Anime</button>
+
+      <!-- Muestra la recomendacion o mensaje de prohibicion-->
+      <!--Edad permitida o no permitida-->
+      <h3 id="permitidoHtml">--</h3>
+      <h2 id="recomendacionHtml">--</h2>
+    </div>
+
+    <script>
+      function recomendar(genero) {
+        let edad = document.getElementById("edadHtml").value;
+        let respuesta = document.getElementById("recomendacionHtml");
+        let permitido = document.getElementById("permitidoHtml");
+
+        if (edad >= 18) {
+          permitido.textContent = "Todas las peliculas permitidas";
+          switch (genero) {
+            case "drama":
+              respuesta.textContent = "El drama";
+              break;
+            case "familiar":
+              respuesta.textContent = "La familiar";
+              break;
+            case "accion":
+              respuesta.textContent = "La de accion";
+              break;
+            case "anime":
+              respuesta.textContent = "Your Name";
+              break;
+          }
+        } else {
+          permitido.textContent =
+            "Puedes ver recomendaciones de los siguientes generos: Familiar, Anime";
+          switch (genero) {
+            case "familiar":
+              respuesta.textContent = "La familiar";
+              break;
+            case "anime":
+              respuesta.textContent = "Your Name";
+              break;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
