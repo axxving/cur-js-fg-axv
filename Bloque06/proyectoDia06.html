@@ -30,8 +30,11 @@
       // Resultado de nota mas alta
       let respuestaNotaAlta = document.getElementById("notaAltaHtml");
 
+      // Resultado de aplazo
+      let respuestaAplazo = document.getElementById("aplazoHtml");
+
       // Declaramos la lista de calificaciones
-      let calificaciones = [10, 9, 3, 4, 5, 6, 7, 8, 8, 8, 6, 6, 7, 7, 7];
+      let calificaciones = [10, 9, 6, 4, 6];
 
       // Imprimimos las calificaciones en el html
       for (let alumno of calificaciones) {
@@ -73,6 +76,13 @@
         }
 
         respuestaNotaAlta.textContent = notaMasAlta;
+      }
+
+      // Sacar aplazo
+      function aplazo() {
+        do {
+          respuestaAplazo.textContent = "Tiene un aplazo";
+        } while (calificacion <= 4);
       }
     </script>
   </body>
