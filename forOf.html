@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For Of</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Tablas de multiplicar</h1>
+      <ul id="listaTabla"></ul>
+      <p>¿Que tabla quisieras conocer?</p>
+      <input type="number" value="0" id="numeroTabla" />
+      <button onclick="tabla()">Ver tabla</button>
+    </div>
+
+    <script>
+      function tabla() {
+        // Obtener el número
+        let numeroHTML = document.getElementById("numeroTabla");
+        let numero = Number(numeroHTML.value);
+
+        // Obtener la tabla
+        let elementoTablaMultiplicar = document.getElementById("listaTabla");
+
+        // Producimos y mostramos resultados
+        for (x = 1; x <= 10; x++) {
+          // Calcular el resultado
+          let resultado = numero * x;
+
+          // Mostramos en pantalla
+          let textoResultado = numero + " X " + x + " es igual a: " + resultado;
+
+          // Generar un elemento de la lista
+          let itemLista = document.createElement("li");
+          // Le damos el contenido al elemento que vamos a generar
+          itemLista.innerText = textoResultado;
+          // Lo agregamos a la lista
+          elementoTablaMultiplicar.appendChild(itemLista);
+        }
+      }
+    </script>
+  </body>
+</html>
