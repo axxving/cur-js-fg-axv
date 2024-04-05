@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Label</title>
+</head>
+<body>
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            min-height: 100vh;
+            text-align: center;
+        }
+    </style>
+    <div class="container">
+        <p>&#127849 Ventas de MaDona &#127849</p>
+
+        <p>
+            <label for="ventasTienda01">Tienda 01</label>
+            <input type="number" id="ventasTienda01" min="0">
+        </p>
+
+        <p>
+            <label for="ventasTienda02">Tienda 02</label>
+            <input type="number" id="ventasTienda02" min="0">
+        </p>
+
+        <p>
+            <label for="ventasTienda03">Tienda 03</label>
+            <input type="number" id="ventasTienda03" min="0">
+        </p>
+
+        <p>
+            <label for="ventasTienda04">Tienda 04</label>
+            <input type="number" id="ventasTienda04" min="0">
+        </p>
+
+        <p>
+            <label for="ventasTienda05">Tienda 05</label>
+            <input type="number" id="ventasTienda05" min="0">
+        </p>
+
+        <p>
+            <label for="ventasTienda06">Tienda 06</label>
+            <input type="number" id="ventasTienda06" min="0">
+        </p>
+    </div>
+
+    <p id="parrafoSalida"></p>
+
+    <p>
+        <button onclick="calcular()">Calcular</button>
+    </p>
+
+    <script>
+        function extraerNumeroDesdeElemento(elemento){
+            let miElemento = document.getElementById(elemento);
+            let miTexto = miElemento.value;
+            let miNumero = Number(miTexto);
+
+            return miNumero;
+        }
+
+        function calcular() {
+            let ventas1, ventas2, ventas3, ventas4, ventas5, ventas6;
+
+            ventas1 = extraerNumeroDesdeElemento("ventasTienda01");
+            ventas2 = extraerNumeroDesdeElemento("ventasTienda02");
+            ventas3 = extraerNumeroDesdeElemento("ventasTienda03");
+            ventas4 = extraerNumeroDesdeElemento("ventasTienda04");
+            ventas5 = extraerNumeroDesdeElemento("ventasTienda05");
+            ventas6 = extraerNumeroDesdeElemento("ventasTienda06");
+
+            let totalVentas = ventas1 + ventas2 + ventas3 + ventas4 + ventas5 + ventas6;
+
+            let mensajeSalida = "Total ventas: " + totalVentas;
+            let elementoSalida = document.getElementById("parrafoSalida");
+            elementoSalida.textContent = mensajeSalida;
+        }
+    </script>
+</body>
+</html>
