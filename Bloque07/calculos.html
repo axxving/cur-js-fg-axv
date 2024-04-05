@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Label</title>
+</head>
+<body>
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            min-height: 100vh;
+            text-align: center;
+        }
+    </style>
+    <div class="container">
+        <p>&#127849 Ventas de MaDona &#127849</p>
+
+        <p>
+            <label for="ventasTienda01">Tienda 01</label>
+            <input type="number" id="ventasTienda01" min="0">
+        </p>
+
+        <p>
+            <label for="ventasTienda02">Tienda 02</label>
+            <input type="number" id="ventasTienda02" min="0">
+        </p>
+
+        <p>
+            <label for="ventasTienda03">Tienda 03</label>
+            <input type="number" id="ventasTienda03" min="0">
+        </p>
+
+        <p>
+            <label for="ventasTienda04">Tienda 04</label>
+            <input type="number" id="ventasTienda04" min="0">
+        </p>
+
+        <p>
+            <label for="ventasTienda05">Tienda 05</label>
+            <input type="number" id="ventasTienda05" min="0">
+        </p>
+
+        <p>
+            <label for="ventasTienda06">Tienda 06</label>
+            <input type="number" id="ventasTienda06" min="0">
+        </p>
+    </div>
+
+    <p id="parrafoSalida"></p>
+
+    <p>
+        <button onclick="calcular()">Calcular</button>
+    </p>
+
+    <script>
+        function extraerNumeroDesdeElemento(elemento){
+            let miElemento = document.getElementById(elemento);
+            let miTexto = miElemento.value;
+            let miNumero = Number(miTexto);
+
+            return miNumero;
+        }
+
+        function calcular() {
+            let ventas =  [];
+
+            ventas[0] = extraerNumeroDesdeElemento("ventasTienda01");
+            ventas[1] = extraerNumeroDesdeElemento("ventasTienda02");
+            ventas[2] = extraerNumeroDesdeElemento("ventasTienda03");
+            ventas[3] = extraerNumeroDesdeElemento("ventasTienda04");
+            ventas[4] = extraerNumeroDesdeElemento("ventasTienda05");
+            ventas[5] = extraerNumeroDesdeElemento("ventasTienda06");
+
+            let totalVentas = sumarTotal(ventas);
+            let ventaMayor = mayor(ventas);
+            let ventaMenor = menor(ventas);
+
+            let mensajeSalida = "Total ventas: " + totalVentas + " / Venta mayor: " + ventaMayor + " / Venta menor: " + ventaMenor;
+            let elementoSalida = document.getElementById("parrafoSalida");
+            elementoSalida.textContent = mensajeSalida;
+        }
+
+        function sumarTotal(array){
+            total = 0;
+            for(let venta of array){
+                total = total + venta;
+            }
+            return total;
+        }
+
+        function mayor(array){
+            let maximo = array[0];
+            for(let venta of array){
+                if (venta > maximo){
+                    maximo = venta;
+                }
+            }
+
+            return maximo;
+        }
+
+        function menor(array){
+            let menor = array[0];
+            for(let venta of array){
+                if (venta < menor){
+                    menor = venta;
+                }
+            }
+
+            return menor;
+        }
+    </script>
+</body>
+</html>
