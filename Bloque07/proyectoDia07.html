@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- Configuración básica del documento -->
+    <meta charset="UTF-8" />
+    <!-- Configuración de la codificación de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Configuración de la vista en dispositivos móviles -->
+    <title>Automatizar 02</title>
+    <!-- Título de la página -->
+  </head>
+  <!-- Cuerpo del documento -->
+  <body onload="generarTiendas('itemsTiendas', 0, 10)">
+    <!-- Cuando la página se carga, llama a la función 'generarTiendas' -->
+    <!-- Estilos CSS -->
+    <style>
+      .neutro {
+        background-color: white;
+      }
+
+      .red {
+        background-color: red;
+      }
+
+      .green {
+        background-color: greenyellow;
+      }
+    </style>
+    <!-- Contenedor principal -->
+    <div class="container">
+      <!-- Título -->
+      <p>⭐ Ventas de MaDona ⭐</p>
+      <!-- Emoji para representar una tienda -->
+      <!-- Contenedor de tiendas -->
+      <div id="itemsTiendas" class="container"></div>
+    </div>
+    <!-- Párrafo para mostrar resultados -->
+    <p id="parrafoSalida"></p>
+    <!-- Botón para calcular -->
+    <p>
+      <button onclick="calcular()">Calcular</button>
+    </p>
+    <!-- Scripts JavaScript -->
+    <script>
+      // Función que genera las tiendas
+      function generarTiendas(contenedorId, min, cantidadTiendas) {
+        let elementoContenedor = document.getElementById(contenedorId); // Obtiene el contenedor
+        for (
+          let conteoTiendas = 1;
+          conteoTiendas <= cantidadTiendas;
+          conteoTiendas++
+        ) {
+          // Itera para generar las tiendas
+          let textoEtiqueta = "Tienda" + conteoTiendas; // Genera el nombre de la tienda
+          let elementoParrafo = generarParrafoTienda(textoEtiqueta, min); // Genera el elemento de la tienda
+          elementoContenedor.appendChild(elementoParrafo); // Agrega la tienda al contenedor
+        }
+      }
+
+      // Función para generar los elementos de tienda
+      function generarParrafoTienda(textoLabel, valorMin) {
+        let elementoParrafo = document.createElement("p"); // Crea un párrafo
+        let elementoLabel = document.createElement("label"); // Crea una etiqueta de texto
+        elementoLabel.innerText = textoLabel + ": "; // Establece el texto de la etiqueta
+        elementoLabel.setAttribute("for", textoLabel); // Establece el atributo 'for' de la etiqueta
+        let elementoInput = document.createElement("input"); // Crea un elemento de entrada
+        elementoInput.setAttribute("type", "number"); // Establece el tipo de entrada
+        elementoInput.setAttribute("id", textoLabel); // Establece el ID del elemento de entrada
+        elementoInput.setAttribute("min", valorMin); // Establece el valor mínimo del elemento de entrada
+        elementoInput.setAttribute("value", 0); // Establece el valor inicial del elemento de entrada
+        elementoParrafo.appendChild(elementoLabel); // Agrega la etiqueta al párrafo
+        elementoParrafo.appendChild(elementoInput); // Agrega el elemento de entrada al párrafo
+        return elementoParrafo; // Devuelve el párrafo completo
+      }
+
+      // Función para extraer un número desde un elemento
+      function extraerNumeroDesdeElemento(elemento) {
+        let miTexto = elemento.value; // Obtiene el valor del elemento
+        let miNumero = Number(miTexto); // Convierte el valor en número
+        return miNumero; // Devuelve el número
+      }
+
+      // Función para calcular las ventas
+      function calcular() {
+        let ventas = []; // Array para almacenar las ventas
+        let posicionVentas = 0; // Variable para seguir la posición en el array
+        let elementosVentas = document.getElementById("itemsTiendas"); // Obtiene los elementos de las tiendas
+        for (let item of elementosVentas.children) {
+          // Itera sobre los elementos de las tiendas
+          let valorVenta = extraerNumeroDesdeElemento(item.children[1]); // Obtiene el valor de la venta
+          ventas[posicionVentas] = valorVenta; // Almacena el valor de la venta en el array
+          posicionVentas++; // Incrementa la posición
+        }
+
+        let totalVentas = sumarTotal(ventas); // Calcula el total de ventas
+        let ventaMayor = mayor(ventas); // Obtiene la venta mayor
+        let ventaMenor = menor(ventas); // Obtiene la venta menor
+
+        for (let item of elementosVentas.children) {
+          let valorVenta = extraerNumeroDesdeElemento(item.children[1]);
+
+          item.children[1].className = "neutro";
+
+          if (valorVenta == ventaMayor) {
+            item.children[1].className = "green";
+          }
+
+          if (valorVenta == ventaMenor) {
+            item.children[1].className = "red";
+          }
+        }
+
+        let mensajeSalida = "Total de ventas: " + totalVentas; // Crea el mensaje de salida
+        let elementoSalida = document.getElementById("parrafoSalida"); // Obtiene el elemento de salida
+        elementoSalida.textContent = mensajeSalida; // Establece el texto del elemento de salida
+      }
+
+      // Función para sumar los elementos de un array
+      function sumarTotal(array) {
+        let total = 0; // Variable para almacenar el total
+        for (let venta of array) {
+          // Itera sobre los elementos del array
+          total += venta; // Suma el valor actual al total
+        }
+        return total; // Devuelve el total
+      }
+
+      // Función para obtener el valor máximo de un array
+      function mayor(array) {
+        let maximo = -Infinity; // Inicializa el valor máximo con un valor muy pequeño
+        for (let venta of array) {
+          // Itera sobre los elementos del array
+          if (venta > maximo) {
+            // Comprueba si el valor actual es mayor que el máximo
+            maximo = venta; // Actualiza el valor máximo
+          }
+        }
+        return maximo; // Devuelve el valor máximo
+      }
+
+      // Función para obtener el valor mínimo de un array
+      function menor(array) {
+        let menor = Infinity; // Inicializa el valor mínimo con un valor muy grande
+        for (let venta of array) {
+          // Itera sobre los elementos del array
+          if (venta < menor) {
+            // Comprueba si el valor actual es menor que el mínimo
+            menor = venta; // Actualiza el valor mínimo
+          }
+        }
+        return menor; // Devuelve el valor mínimo
+      }
+    </script>
+  </body>
+</html>
