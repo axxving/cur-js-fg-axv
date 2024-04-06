@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>This</title>
+  </head>
+  <body>
+    <script>
+      // Objeto perro
+      let perro = {
+        nombre: "simba",
+        raza: "Shih Tzu",
+        edad: 4,
+        // Metodo
+        ladrar() {
+          console.log("Guau");
+        },
+        saludar() {
+          console.log("Hola mi nombre es: " + this.nombre);
+        },
+      };
+
+      // Objeto perro
+      let perro2 = {
+        nombre: "Reina",
+        raza: "Caniche",
+        edad: 15,
+        // Metodo
+        ladrar() {
+          console.log("Guau");
+        },
+        saludar() {
+          console.log("Hola mi nombre es: " + this.nombre);
+        },
+      };
+    </script>
+  </body>
+</html>
