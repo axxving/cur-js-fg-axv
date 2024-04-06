@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Objeto de la forma comun
+      let coche1 = new Object();
+
+      coche1.marca = "Chevi";
+      coche1["modelo"] = "Prisma";
+      coche1.encender = function () {
+        alert("coche encendido");
+      };
+
+      // Generando un nuevo objeto con propiedades con object
+      let perro1 = new Object({ nombre: "simba" });
+
+      // Generando un objeto igual a otro ya hecho
+      let coche2 = Object.create(coche1);
+    </script>
+  </body>
+</html>
