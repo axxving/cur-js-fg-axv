@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actualizar objeto</title>
+  </head>
+  <body>
+    <button onclick="cumplirAños()">cumplir años</button>
+    <button onclick="muestraNombre()">muestra su nombre</button>
+
+    <input type="text" id="tipo" />
+    <input type="text" id="agregaPropiedad" />
+    <button onclick="agregar()">agregar</button>
+
+    <h2 id="propiedades">Edad perro</h2>
+
+    <script>
+      let tipoPropiedad = document.getElementById("tipo");
+
+      let agregaPropiedad = document.getElementById("agregaPropiedad");
+
+      let propiedades = document.getElementById("propiedades");
+
+      // Objeto perro
+      let perro = {
+        nombre: "simba",
+        raza: "Shih Tzu",
+        edad: 4,
+        // Metodo
+        ladrar() {
+          console.log("Guau");
+        },
+      };
+
+      // Acceder al contenido del objeto
+      // objeto["propiedad"];
+
+      // Acceder a las propiedades del objeto
+      // objeto.ladrar()
+      // objeto.edad
+
+      perro.edad = 10;
+
+      function cumplirAños() {
+        perro.edad = perro.edad + 1;
+        propiedades.textContent = perro.edad;
+      }
+
+      function muestraNombre() {
+        propiedades.textContent = perro.nombre;
+      }
+
+      function agregar(tipo, propiedad) {
+        tipo = tipoPropiedad.value;
+        propiedad = agregaPropiedad.value;
+
+        perro[tipo] = propiedad;
+
+        propiedades.textContent = perro[propiedad];
+      }
+
+      // Nueva propiedad a perro
+      perro["colorOjos"] = "marron";
+    </script>
+  </body>
+</html>
