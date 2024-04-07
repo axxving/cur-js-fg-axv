@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modificar prototipos</title>
+  </head>
+  <body>
+    <script>
+      // Object
+
+      // Constructor de un objeto o prototipo
+      function Libro(autor, titulo, cantPaginas) {
+        this.autor = autor;
+        this.titulo = titulo;
+        this.cantPaginas = cantPaginas;
+      }
+
+      // Instancia de un objeto
+      let libro1 = new Libro("Stehen King", "Carrie", 524);
+
+      Libro.prototype.abrirLibro = function () {
+        alert(this.titulo + " ha sido abierto.");
+      };
+
+      let libro2 = new Libro("Prueba", "Prueba", 4545);
+
+      // Buenas practicas para el orden en la definicion de metodos y objetos
+      function UnObjeto() {
+        // Propiedades del objeto
+        this.a = a;
+      }
+
+      // Metodos del objeto
+      UnObjeto.prototype.metodo1 = function () {};
+      UnObjeto.prototype.metodo2 = function () {};
+    </script>
+  </body>
+</html>
