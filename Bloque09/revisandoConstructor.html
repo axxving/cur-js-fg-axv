@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Revisando el constructor</title>
+  </head>
+  <body>
+    <script>
+      // Object
+
+      // Constructor de un objeto o prototipo
+      function Libro(author, titulo, cantPaginas) {
+        this.autor = autor;
+        this.titulo = titulo;
+        this.cantPaginas = cantPaginas;
+      }
+
+      // Instancia de un objeto
+      let libro1 = new Libro("Stehen King", "Carrie", 524);
+
+      // metodo valueOf
+      // = Valor del objeto
+
+      // Generando objeto de tipo instancia de libro1
+      let libro2 = Object.create(libro1);
+
+      libro2.__proto__;
+
+      // Generar un libro de una manera diferente
+      let libro3 = new libro1.constructor("Ana", "Libro", 350);
+
+      // Ver el nombre del constructor que usa un objeto
+      libro3.constructor.name;
+      // Nombre del constructor
+    </script>
+  </body>
+</html>
