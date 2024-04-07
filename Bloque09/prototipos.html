@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prototipos</title>
+  </head>
+  <body>
+    <h2>Cadena de prototipos</h2>
+
+    <script>
+      // Generamos un objeto llamado perro que sera el prototipo
+      let perro = { nombre: "simba" };
+      // Generamos un objeto que es una instancia del objeto prototipo, es decir, una instancia
+      let perro2 = Object.create(perro);
+    </script>
+  </body>
+</html>
