@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro de automoviles</title>
+  </head>
+  <body>
+    <div class="container">
+      <button onclick="mostrarAutos()">Mostrar autos</button>
+    </div>
+    <script>
+      // Texto donde se mostrara la lista de los autos
+      let mostrarAutosHtml = document.getElementById("mostrarInformacion");
+
+      // Constructor de automoviles
+      // marca, modelo, color, año, titular
+      function Auto(marca, modelo, color, año, titular) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.color = color;
+        this.año = año;
+        this.titular = titular;
+      }
+
+      let auto1 = new Auto("Ford", "Chevi", "Rojo", "2023", "Jose Roberto");
+      let auto2 = new Auto("Audi", "Paki", "Azul", "2023", "Joss Minor");
+      let auto3 = new Auto("Nissan", "Cheyen", "Verde", "2024", "Jairo Yair");
+      let auto4 = new Auto("Ejemplo", "Ejemplo", "Ejemplo", "0000", "Name");
+
+      // 3 metodos
+      // vender = titular
+      Auto.prototype.vender = function (nuevoDueño) {
+        this.titular = nuevoDueño;
+      };
+
+      // encender = "El auto esta en marcha"
+      Auto.prototype.encender = function () {
+        alert("El auto esta en marcha");
+      };
+
+      // ver auto = marca, modelo, año, titular
+      Auto.prototype.verAutos = function () {
+        let respuesta = "";
+        for (let auto of instancias) {
+          respuesta +=
+            "Marca: " +
+            auto.marca +
+            "\nModelo: " +
+            auto.modelo +
+            "\nAño: " +
+            auto.año +
+            "\nTitular: " +
+            auto.titular +
+            "\n\n";
+        }
+        return respuesta;
+      };
+
+      // Instancias de automovil
+      let instancias = [auto1, auto2, auto3, auto4];
+
+      // llama al metodo de ver autos en una instancia de auto
+      function mostrarAutos() {
+        let imprimir = instancias[0].verAutos();
+        alert(imprimir);
+      }
+    </script>
+  </body>
+</html>
