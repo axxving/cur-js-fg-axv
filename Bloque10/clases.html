@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clases en Java Script</title>
+  </head>
+  <body>
+    <h1>Declaracion de una clase</h1>
+    <script>
+      // Declaracion de clase que sirve para generar nuevos objetos de tipo papel
+      class Papel {
+        // Constructor de un objeto dentro de una clase
+        constructor(alto, ancho) {
+          this.alto = alto;
+          this.ancho = ancho;
+        }
+      }
+
+      // Definicion de clase "Anonima"
+      let PapelA = class {
+        // Constructor de un objeto dentro de una clase
+        constructor(alto, ancho) {
+          this.alto = alto;
+          this.ancho = ancho;
+        }
+      };
+
+      // Definicion de clase "nombrada"
+      let PapelB = class PapelX {
+        // Constructor de un objeto dentro de una clase
+        constructor(alto, ancho) {
+          this.alto = alto;
+          this.ancho = ancho;
+        }
+      };
+
+      // Siempre deben de estar primero, antes de que se declare un nuevo objeto
+    </script>
+  </body>
+</html>
