@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Getters y Setters</title>
+  </head>
+  <body>
+    <h1>Getters y Setters</h1>
+    <script>
+      // _ El guin bajo se usa para indicar que debe ser tratada como propiedad privada
+
+      // Clase padre
+      class Deportista {
+        constructor(nombre, apellido) {
+          this.nombre = nombre;
+          this.apellido = apellido;
+        }
+      }
+
+      // Clase hija de deportista
+      class Futbolista extends Deportista {
+        constructor(nombre, apellido, goles) {
+          super(nombre, apellido);
+          // Propiedad que va a se tratada como privada
+          this._goles = goles;
+        }
+
+        get goles() {
+          return this._goles;
+        }
+
+        set goles(nuevoGoles) {
+          this._goles = nuevoGoles;
+        }
+      }
+    </script>
+  </body>
+</html>
