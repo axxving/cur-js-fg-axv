@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proyecto dia 10</title>
+  </head>
+  <body>
+    <button onclick="mostrarInfo()">Ver informacion</button>
+    <ul id="ul"></ul>
+
+    <script>
+      // Capturando al elemento HTML
+      let ul = document.getElementById("ul");
+
+      // Clase animal
+      class Animal {
+        constructor(nombre, peso, edad) {
+          this.nombre = nombre;
+          this.peso = peso;
+          this.edad = edad;
+        }
+
+        // corregido
+        informacion() {
+          return `Nombre: ${this.nombre}, Peso: ${this.peso}, Edad: ${this.edad}`;
+        }
+      }
+
+      // Perro
+      class Perro extends Animal {
+        constructor(nombre, peso, edad, raza) {
+          super(nombre, peso, edad);
+          this.raza = raza;
+        }
+
+        // corregido
+        informacion() {
+          return `Nombre: ${this.nombre}, Peso: ${this.peso}, Edad: ${this.edad}, Raza: ${this.raza}`;
+        }
+      }
+
+      // Gato
+      class Gato extends Animal {
+        constructor(nombre, peso, edad, sexo) {
+          super(nombre, peso, edad);
+          this.sexo = sexo;
+        }
+
+        // corregido
+        informacion() {
+          return `Nombre: ${this.nombre}, Peso: ${this.peso}, Edad: ${this.edad}, Sexo: ${this.sexo}`;
+        }
+      }
+
+      // Conejo
+      class Conejo extends Animal {
+        constructor(nombre, peso, edad, color) {
+          super(nombre, peso, edad);
+          this.color = color;
+        }
+
+        // corregido
+        informacion() {
+          return `Nombre: ${this.nombre}, Peso: ${this.peso}, Edad: ${this.edad}, Color: ${this.color}`;
+        }
+      }
+
+      // Nuevo perro
+      let perro = new Perro("Perro", "2kg", 5, "Doberman");
+      // Nuevo Gato
+      let gato = new Gato("Gato", "1kg", 5, "Hembra");
+      // Nuevo conejo
+      let conejo = new Conejo("Conejo", "0.5kg", 5, "Cafe");
+      // Lista de animales
+      let animales = [perro, gato, conejo];
+
+      function mostrarInfo() {
+        // variable vacia
+        let respuestas = "";
+        for (let animal of animales) {
+          // Corregido
+          // item nuevo generado
+          let item = document.createElement("li");
+          // agregando informacion al item
+          item.innerText = animal.informacion();
+          // Agregamos a la lista
+          ul.appendChild(item);
+        }
+      }
+    </script>
+  </body>
+</html>
