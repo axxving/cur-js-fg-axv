@@ -1,14 +1,11 @@
 {
-    "nombre": "Alejandro",
-    "Edad": 25,
-    "estudiante": false,
-    "direccion": {
-        "calle": "Av. Siempre Viva 742",
-        "ciudad": "Springfield"
-    },
+  "nombre": "Alejandro",
+  "Edad": 25,
+  "estudiante": false,
+  "direccion": {
+    "calle": "Av. Siempre Viva 742",
+    "ciudad": "Springfield"
+  },
 
-    "telefonos": [
-        "222 222 222",
-        "555 555 555"
-    ]
+  "telefonos": ["222 222 222", "555 555 555"]
 }
