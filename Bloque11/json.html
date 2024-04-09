@@ -5,5 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Json</title>
   </head>
-  <body></body>
+  <body>
+    <!---->
+    <div id="nombre">--nombre--</div>
+
+    <script>
+      // Json con toda la data de una persona
+      let miPersona = {
+        nombre: "Alejandro",
+        Edad: 25,
+        estudiante: false,
+        direccion: {
+          calle: "Av. Siempre Viva #742",
+          ciudad: "Springfield",
+        },
+
+        telefonos: ["222 222 222", "555 555 555"],
+      };
+      // Varoiable que manda a llamar el elemento html con el ID de nombre
+      let nombre = document.getElementById("nombre");
+
+      // Dandole el valor al elemento html de la data de json
+      nombre.textContent = miPersona.nombre;
+    </script>
+  </body>
 </html>
