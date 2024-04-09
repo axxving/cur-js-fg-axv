@@ -10,23 +10,34 @@
     <div id="nombre">--nombre--</div>
 
     <script>
-      // Json con toda la data de una persona
-      let miPersona = {
-        nombre: "Alejandro",
-        Edad: 25,
-        estudiante: false,
-        direccion: {
-          calle: "Av. Siempre Viva #742",
-          ciudad: "Springfield",
-        },
+      // Variable vacia
+      let datosJson;
 
-        telefonos: ["222 222 222", "555 555 555"],
+      // Solicitar a un objeto json que nos brinde informacion
+      let xhr = new XMLHttpRequest();
+      // Solicitar la informacion "TIPO"
+      xhr.open("GET", "persona.json", true);
+      // Convierte a tipo de dato
+      xhr.responseType = "json";
+
+      // Se desencadena cuando la solicitud http a sido completada exitosamente
+      xhr.onload = function () {
+        // Si el estado de la solicitud es identico a 200
+        if (xhr.status === 200) {
+          // Si si
+          // Que la informacion se almacene en la variable vacia
+          datosJson = xhr.response;
+          let elementoTexto = document.getElementById("nombre");
+          elementoTexto.textContent = datosJson.nombre;
+        } else {
+          // Si no se cumple
+          // Manejar el error
+        }
       };
-      // Varoiable que manda a llamar el elemento html con el ID de nombre
-      let nombre = document.getElementById("nombre");
 
-      // Dandole el valor al elemento html de la data de json
-      nombre.textContent = miPersona.nombre;
+      // Enviando la informacion
+      xhr.send();
+      // Que es asincrono?
     </script>
   </body>
 </html>
