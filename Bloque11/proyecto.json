@@ -1,0 +1,11 @@
+{
+  "nombre": "Pepe Perez",
+  "numCuenta": 55,
+  "saldo": 4555,
+  "moneda": {
+    "titulo": "Moneda",
+    "dolares": 4253435,
+    "euros": 45487
+  },
+  "cbu": "FG678678687GHGHJJ"
+}

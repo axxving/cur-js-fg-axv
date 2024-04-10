@@ -10,26 +10,52 @@
     <h3>Springfield, IL</h3>
 
     <!-- Nombre -->
-    <label for="">Nombre: </label>
+    <label for="nombreHTML">Nombre: </label>
     <h2 id="nombreHTML">--nombre--</h2>
 
     <!-- Numero de cuenta -->
-    <label for="">Numero de cuenta: </label>
+    <label for="numeroCuentaHTML">Numero de cuenta: </label>
     <h2 id="numeroCuentaHTML">--Numero cuenta--</h2>
 
     <!-- Saldo: -->
-    <label for="">Saldo: </label>
+    <label for="saldoHTML">Saldo: </label>
+    <h2 id="saldoHTML">--Saldo--</h2>
 
+    <label for="usd">Dolares:</label>
     <!-- USD: -->
     <p id="dolares">--dolares--</p>
 
+    <label for="euros">Euros:</label>
     <!-- EUROS: -->
     <p id="euros">--euros--</p>
 
-    <label for="">CBU: </label>
+    <label for="cbu">CBU: </label>
     <h2 id="cbu">--cbu--</h2>
     <script>
-        
+      // Declaro una variable vacia
+      let data;
+
+      // LLamo a la base de los datos
+      fetch("/Bloque11/proyecto.json")
+        // Convierte los datos a tipo json
+        .then((respuesta) => respuesta.json())
+        .then((salidaDatos) => {
+          data = salidaDatos;
+
+          let nombre = document.getElementById("nombreHTML");
+          let numCuenta = document.getElementById("numeroCuentaHTML");
+          let saldo = document.getElementById("saldoHTML");
+          let dolares = document.getElementById("dolares");
+          let euros = document.getElementById("euros");
+          let cbu = document.getElementById("cbu");
+
+          nombre.textContent = data.nombre;
+          numCuenta.textContent = data.numCuenta;
+          saldo.textContent = data.saldo;
+          dolares.textContent = data.moneda.dolares;
+          euros.textContent = data.moneda.euros;
+          cbu.textContent = data.cbu;
+        });
     </script>
   </body>
 </html>
