@@ -1,6 +1,6 @@
 {
   "nombre": "Alejandro",
-  "Edad": 25,
+  "edad": 25,
   "estudiante": false,
   "direccion": {
     "calle": "Av. Siempre Viva 742",

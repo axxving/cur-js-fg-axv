@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch JSON</title>
+  </head>
+  <body>
+    <!-- Aquí crearemos un elemento HTML con un id "nombre" donde mostraremos el nombre obtenido del JSON -->
+    <h1>Nombre: <span id="nombre"></span></h1>
+
+    <!-- Este script se encargará de obtener y mostrar los datos del JSON -->
+    <script>
+      // Creamos una variable para almacenar los datos obtenidos del JSON
+      let datosJson;
+
+      // Utilizamos el método fetch para obtener el JSON del servidor
+      fetch("/Bloque11/persona.json")
+        // El método then maneja la respuesta del servidor
+        .then((res) => res.json()) // Convertimos la respuesta a formato JSON
+        // Este segundo then maneja el JSON obtenido
+        .then((salida) => {
+          // Guardamos los datos obtenidos en la variable datosJson
+          datosJson = salida;
+
+          // Buscamos el elemento HTML con el id "nombre" y lo almacenamos en la variable elementoTexto
+          let elementoTexto = document.getElementById("nombre");
+
+          // Actualizamos el contenido de elementoTexto con el valor del nombre obtenido del JSON
+          elementoTexto.textContent = datosJson.nombre;
+        });
+    </script>
+  </body>
+</html>
