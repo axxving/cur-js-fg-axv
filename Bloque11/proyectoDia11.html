@@ -55,6 +55,9 @@
           dolares.textContent = data.moneda.dolares;
           euros.textContent = data.moneda.euros;
           cbu.textContent = data.cbu;
+        })
+        .catch(function (error) {
+          alert(error);
         });
     </script>
   </body>
