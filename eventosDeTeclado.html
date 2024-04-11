@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventos de teclado</title>
+  </head>
+  <body>
+    <h1>Eventos de teclado</h1>
+    <input type="text" id="miCampo" />
+
+    <script>
+      let campo = document.getElementById("miCampo");
+
+      function verificarNumero(event) {
+        // Verifica si se esta ingresando algo diferente de un numero
+        if (event.keyCode < 48 || event.keyCode > 57) {
+          event.preventDefault();
+        }
+      }
+
+      campo.addEventListener("keydown", verificarNumero);
+
+      campo.addEventListener("keyup", function (event) {
+        console.log("Entrada del usuario: " + event.target.value);
+      });
+
+      campo.addEventListener("keypress", function (event) {
+        console.log("Caracter ingresado: " + event.key);
+      });
+    </script>
+  </body>
+</html>
