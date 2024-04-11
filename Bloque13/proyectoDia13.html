@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proyecto del día 13</title>
+  </head>
+  <body onload="cargaContenido()">
+    <style>
+      body {
+        background-color: rgb(138, 164, 108);
+      }
+    </style>
+    <div class="logo">
+      <img id="imgLogo" />
+      <!-- Elemento de imagen para el logotipo -->
+      <h1 id="titulo"></h1>
+      <!-- Encabezado para el título -->
+    </div>
+
+    <hr />
+
+    <div class="cuadro">
+      <!-- Divs para mostrar las cotizaciones -->
+      <div class="UsdEur">EUR a USD: <span id="usdEur"></span></div>
+      <div class="UsdArs">ARG a USD: <span id="usdArs"></span></div>
+      <div class="BitcoinUsd">Bitcoin a USD: <span id="bitcoinUsd"></span></div>
+    </div>
+
+    <div class="espera">
+      <img id="imgEspera" />
+      <!-- Elemento de imagen para mostrar mientras se cargan los datos -->
+    </div>
+
+    <script>
+      function cargaContenido() {
+        // Funcion que cargue las cotizaciones
+        cargarCotizaciones(mostrarCotizacion);
+
+        // Funcion que cargue los elementos
+        cargaElementos();
+
+        // Funcion que cargue los textos
+        cargarTextos();
+      }
+
+      function cargarTextos() {
+        // Cargar texto de "Cargando..." en los elementos
+        document.getElementById("usdEur").innerHTML = "Cargando...";
+        document.getElementById("usdArs").innerHTML = "Cargando...";
+        document.getElementById("bitcoinUsd").innerHTML = "Cargando...";
+      }
+
+      async function cargarCotizaciones(callback) {
+        try {
+          // Obtener datos de la API de tasas de cambio
+          let promesa1 = await fetch(
+            "https://api.exchangerate-api.com/v4/latest/USD"
+          );
+          let datos1 = await promesa1.json();
+          // Mostrar las tasas de cambio en los elementos correspondientes
+          document.getElementById("usdEur").innerHTML = datos1.rates.EUR;
+          document.getElementById("usdArs").innerHTML = datos1.rates.ARS;
+
+          // Obtener datos de la API de CoinDesk para el precio de Bitcoin
+          let promesa2 = await fetch(
+            "https://api.coindesk.com/v1/bpi/currentprice.json"
+          );
+          let datos2 = await promesa2.json();
+          // Mostrar el precio de Bitcoin en los elementos correspondientes
+          document.getElementById("bitcoinUsd").innerHTML = datos2.bpi.USD.rate;
+
+          // Ocultar la imagen de espera
+          document.getElementById("imgEspera").style.visibility = "hidden";
+        } catch (error) {
+          // Manejar errores en la carga de las cotizaciones
+          console.error("Error al cargar las cotizaciones:", error);
+        }
+      }
+
+      function mostrarCotizacion(datos) {
+        // Esta función no se utiliza en este contexto, ya que las cotizaciones se muestran directamente en cargarCotizaciones
+      }
+
+      function cargaElementos() {
+        // Cargar el logotipo
+        document.getElementById("imgLogo").setAttribute("src", "logo.jpg");
+        // Establecer el título de la página
+        document.getElementById("titulo").textContent = "Cotizaciones Online";
+        // Establecer la imagen de espera y hacerla visible
+        document.getElementById("imgEspera").setAttribute("src", "loading.gif");
+        document.getElementById("imgEspera").style.visibility = "visible";
+      }
+    </script>
+  </body>
+</html>
