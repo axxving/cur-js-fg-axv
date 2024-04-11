@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proyecto del día 12</title>
+  </head>
+  <body>
+    <h1>Proyecto del día 12</h1>
+
+    <label for="listaContenido">Selecciona el género:</label>
+    <select id="listaContenido">
+      <option value="peliculas">Películas</option>
+      <option value="series">Series</option>
+    </select>
+
+    <form>
+      <input id="input" type="text" placeholder="Ingresa tu búsqueda" />
+      <button id="buscarBtn" type="button">Buscar</button>
+      <!-- Cambiado a type="button" para evitar envío de formulario -->
+    </form>
+
+    <ul id="contenedorContenido"></ul>
+
+    <script>
+      // Se declara la variable que contenga el valor del archivo json
+      let archivo;
+      // URLs para las películas y series
+      const urlPeliculas = "peliculas.json";
+      const urlSeries = "series.json";
+      // Se atrapa el elemento html (select)
+      let listaContenido = document.getElementById("listaContenido");
+
+      // Función para cambiar el archivo en el select
+      function cambiarContenido() {
+        // seleccion será igual a la selección del usuario
+        let seleccion = listaContenido.value;
+        // archivo, por lo tanto, será igual a la URL correspondiente
+        archivo = seleccion === "peliculas" ? urlPeliculas : urlSeries;
+        console.log("Se seleccionó: " + seleccion);
+      }
+
+      // Llamamos al evento change para cambiar el valor de la lista
+      listaContenido.addEventListener("change", cambiarContenido);
+
+      // VERIFICAR INGRESO DE USUARIO
+      // Atrapamos el elemento input del html
+      let input = document.getElementById("input");
+
+      // Atrapamos al elemento botón del html
+      let buscarBtn = document.getElementById("buscarBtn");
+
+      // Añadimos el escuchador de eventos para buscar
+      buscarBtn.addEventListener("click", realizarBusqueda);
+
+      // Verificar el valor ingresado por el usuario
+      function realizarBusqueda() {
+        fetch(archivo)
+          .then((respuesta) => respuesta.json())
+          .then((data) => {
+            // Obtenemos el valor ingresado por el usuario
+            const inputUsuario = input.value.trim().toLowerCase();
+
+            // Filtrar los datos en base al input del usuario
+            const resultados = data.filter((dato) =>
+              dato.nombre.toLowerCase().startsWith(inputUsuario)
+            );
+
+            // Mostrar los resultados en la interfaz de usuario
+            mostrarResultados(resultados);
+          })
+          .catch(function (error) {
+            alert(error);
+          });
+      }
+
+      function mostrarResultados(resultados) {
+        const contenedor = document.getElementById("contenedorContenido");
+        contenedor.innerHTML = ""; // Limpiamos el contenedor antes de agregar nuevos resultados
+
+        for (const resultado of resultados) {
+          const elementoLista = document.createElement("li");
+          elementoLista.textContent = `${resultado.nombre}: ${resultado.sinopsis}`;
+          contenedor.appendChild(elementoLista);
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -15,6 +15,7 @@
       function verificarNumero(event) {
         // Verifica si se esta ingresando algo diferente de un numero
         if (event.keyCode < 48 || event.keyCode > 57) {
+          // No realizara su accion predeterminada
           event.preventDefault();
         }
       }
