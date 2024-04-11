@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventos en tiempo real</title>
+  </head>
+  <body>
+    <h1>Eventos en tiempo real</h1>
+    <p>
+      Actualizan el contenido de una pagina web sin tener que recargarla todo el
+      tiempo
+    </p>
+
+    <form action="" id="contenedorMensajes">
+      <input
+        type="text"
+        name=""
+        id="mensajeIngresado"
+        placeholder="Escribir mensaje"
+      />
+      <button type="submit" id="enviar">Enviar</button>
+    </form>
+    <div id="mensajesChat"></div>
+    <script>
+      // Generando un webSocket
+      // ws - Se esta usando web socket
+      // localhost - direccion ficticia del servidor
+      // 8080 - Puerto ficticio en el que esta escuchando el servidor
+      let socket = new WebSocket("ws://localhost:8080");
+
+      // Atrapando los elementos HTML
+      let mensajeIngresado = document.getElementById("mensajeIngresado");
+      let boton = document.getElementById("enviar");
+
+      // Mostrar los mensajes
+      function mostrarMensajes(contenido) {
+        // Atrapamos al elemento que va a contener a los mensajes
+        let contenedorMensajes = document.getElementById("mensajesChat");
+        // Se genera el elemento p, osea el contenido del mensaje aqui puede estar
+        let elementoMensaje = document.createElement("p");
+        // Le damos el contenido del mensaje, osea, ya lo estamos haciendo
+        elementoMensaje.innerText = contenido;
+        // Agregamos el mensaje al contenedor de los mensajes
+        contenedorMensajes.appendChild(elementoMensaje);
+      }
+
+      boton.onclick = function () {
+        // Obteniendo el valor del mensaje ingresado por el usuario
+        let mensaje = mensajeIngresado.value;
+        // llamar a la funcion para mostrar el mensaje en el chat
+        mostrarMensajes(mensaje);
+        // Se esta enviando el mensaje al servidor a través del socket
+        socket.send(mensaje);
+      };
+
+      socket.onmessage = function (event) {
+        // Obteniendo el mensaje recibido desde el servidor a través del socket
+        let mensaje = event.data;
+        // Mostrando el mensaje recibido en el chat
+        mostrarMensajes(mensaje);
+      };
+    </script>
+  </body>
+</html>
