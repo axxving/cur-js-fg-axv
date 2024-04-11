@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventos</title>
+  </head>
+  <body>
+    <h1>Eventos</h1>
+    <!--add event listener -->
+    <!-- Agregar un escuchador de eventos -->
+    <button id="miBoton">Haz Click Aqui</button>
+    <script>
+      let boton = document.getElementById("miBoton");
+
+      // Agregando un escuchador de eventos
+      //boton.addEventListener("click", function () {
+      //alert("El boton fue presionado.");
+      //});
+
+      // Funcion que se activara al suceder el evento
+      function mostrarMensaje() {
+        // Mostrar la alerta
+        alert("El boton fue presionado");
+      }
+
+      function mauseOver() {
+        alert("Hover");
+      }
+
+      // Evento de click
+      boton.addEventListener("click", mostrarMensaje);
+
+      // Evento de MauseOver
+      boton.addEventListener("mouseover", mauseOver);
+    </script>
+  </body>
+</html>
