@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manejo de eventos</title>
+  </head>
+  <body>
+    <h1>Manejar evenetos en el DOM</h1>
+    <div id="miDiv">
+      <button id="miBoton">Click</button>
+    </div>
+
+    <a id="miEnlace" href="https://www.google.com/">ir a google</a>
+    <script>
+      let boton = document.getElementById("miBoton");
+
+      let div = document.getElementById("miDiv");
+
+      let enlace = document.getElementById("miEnlace");
+
+      function evitarEnlace(event) {
+        // Evita la accion predeterminada de un elemento
+        event.preventDefault();
+        alert("Enlace no habilitado");
+      }
+
+      // Objeto event
+      function mostrarMensaje(event) {
+        alert(event.target);
+        // Objetivo actual
+        alert(event.currentTarget);
+      }
+
+      //
+      div.addEventListener("click", mostrarMensaje);
+
+      //boton.addEventListener("click", mostrarMensaje);
+
+      enlace.addEventListener("click", evitarEnlace);
+    </script>
+  </body>
+</html>
