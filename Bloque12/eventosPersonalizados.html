@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventos personalizados</title>
+  </head>
+  <body>
+    <h1>Eventos personalizados</h1>
+
+    <audio src="" controls id="audio"></audio>
+    <br />
+    <select name="" id="listaCanciones">
+      <option value="cancion1.mp3">Cancion 1</option>
+      <option value="cancion2.mp3">Cancion 2</option>
+      <option value="cancion3.mp3">Cancion 3</option>
+    </select>
+
+    <script>
+      let audio = document.getElementById("audio");
+      let listaCanciones = document.getElementById("listaCanciones");
+
+      // Funcion para cambiar la cancion
+      function cambiarCancion() {
+        cancionElegida = listaCanciones.value;
+        audio.src = cancionElegida;
+        audio.play();
+        let evento = new CustomEvent("cambioDeCancion");
+        audio.dispatchEvent(evento);
+      }
+
+      listaCanciones.addEventListener("change", cambiarCancion);
+
+      // Mostrando el nombre de la cancion en la consola
+      audio.addEventListener("cambioDeCancion", mostrarCancion);
+
+      function mostrarCancion() {
+        console.log("La cancion actual es: " + listaCanciones.value);
+      }
+    </script>
+  </body>
+</html>
