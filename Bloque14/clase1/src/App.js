@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+// Importaciones
+import React from "react";
+// Compilacion de todos los componentes
+// COMPONENTE UNO
+function App(props) {
+  // LLevar el conteo
+  let [contador, setearConteo] = React.useState(0);
 
-function App() {
+  function aumentar() {
+    // Estado interno
+    setearConteo(contador + 1);
+  }
+
+  // CONTENIDO QUE SE MOSTRARA
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ backgroundColor: props.colorFondo }}>
+      <h1 style={{ color: props.colorTexto }}>Contador: {contador}</h1>
+      <button onClick={aumentar}>Incrementar</button>
     </div>
   );
 }
 
+// Exportamos a app que va a ser capturado por index
 export default App;
