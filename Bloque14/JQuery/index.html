@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <button id="btn">Presioname</button>
+    <input type="text" id="input" />
+    <script>
+      // When the document is ready (all HTML elements are loaded)
+      $(document).ready(function () {
+        $("#btn").click(function () {
+          // Get the value from the input field
+          let value = $("#input").val();
+
+          // Display an alert message with the input value in a clear and concise way
+          alert("El valor del input es: " + value);
+        });
+      });
+    </script>
+  </body>
+</html>
