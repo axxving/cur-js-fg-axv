@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Metodo: POST</title>
+  </head>
+
+  <body>
+    <h1>Usando el método POST</h1>
+    <script>
+      async function generarPost(titulo, contenido) {
+        try {
+          // Envía una solicitud POST al servidor con los datos proporcionados
+          let respuesta = await fetch(
+            "https://jsonplaceholder.typicode.com/posts", // URL del servidor de prueba
+            {
+              method: "POST", // Método HTTP utilizado
+              headers: {
+                "Content-Type": "application/json", // Encabezados de la solicitud
+              },
+              body: JSON.stringify({
+                title: titulo, // Título del post
+                body: contenido, // Contenido del post
+                userId: 1, // ID del usuario que realiza el post
+              }),
+            }
+          );
+
+          // Verifica si la respuesta de la solicitud es exitosa
+          if (!respuesta.ok) {
+            // Si la respuesta no es exitosa, lanza un error
+            throw new Error("Error en la solicitud: " + respuesta.statusText);
+          }
+
+          // Convierte la respuesta a formato JSON
+          let data = await respuesta.json();
+          // Muestra los datos devueltos en la consola del navegador
+          console.log("Registro generado: ", data);
+        } catch (error) {
+          // Captura cualquier error que ocurra durante el proceso
+          console.error("Algo salió mal al hacer el registro: ", error);
+        }
+      }
+
+      // Llama a la función generarPost con datos de ejemplo
+      generarPost("Mi titulo de ejemplo", "Mi contenido de ejemplo");
+    </script>
+  </body>
+</html>
