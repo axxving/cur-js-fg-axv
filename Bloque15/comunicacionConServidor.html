@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunicación con el Servidor en JavaScript</title>
+</head>
+
+<body>
+    <h1>Explicacion con ejemplos</h1>
+    <p>Existen varios tipos de solicitudes al servidor.</p>
+
+    <p>Un ejemplo de uso seria imaginar esta situacion, un restaurante, donde hay un cliente, un mesero y un chef</p>
+    <p>1 - El cliente hace una solicitud al mesero</p>
+    <p>2 - El mesero le lleva la solicitud al chef</p>
+    <p>3 - El chef realiza el pedido que fue solicitado por el cliente y una vez que esta listo, se lo entrega al mesero
+    </p>
+    <p>4 - El mesero se lo lleva al cliente</p>
+    <p>5 - El cliente recibe la informacion</p>
+
+    <h2>Sustitucion</h2>
+    <p>El cliente es el navegador</p>
+    <p>El mesero es JavaScript</p>
+    <p>El chef es el servidor</p>
+    <h1>Explicación de Solicitudes HTTP</h1>
+    <p>Las solicitudes HTTP son mensajes enviados por un cliente (como un navegador web) a un servidor web para
+        solicitar recursos, como páginas HTML, imágenes, archivos CSS, etc. Estas solicitudes contienen información
+        sobre qué recurso se está solicitando y cómo se debe manejar la solicitud.</p>
+    <p>La estructura básica de una solicitud HTTP incluye:</p>
+    <ol>
+        <li><strong>Línea de solicitud:</strong> Contiene el método HTTP, la URL del recurso solicitado y la versión de
+            HTTP que el cliente está utilizando.</li>
+        <li><strong>Encabezados (Headers):</strong> Proporcionan información adicional sobre la solicitud, como el tipo
+            de navegador del cliente, el tipo de contenido que puede manejar y la codificación de caracteres preferida.
+        </li>
+        <li><strong>Cuerpo de la solicitud (Opcional):</strong> Algunas solicitudes pueden incluir datos adicionales en
+            el cuerpo de la solicitud, como cuando se envían datos de un formulario HTML.</li>
+        <li><strong>Métodos HTTP:</strong> Definen la acción que el cliente desea realizar en el recurso identificado.
+            Los métodos HTTP comunes son GET, POST, PUT, DELETE, entre otros.</li>
+    </ol>
+
+    <h1>Tipos de Solicitudes HTTP</h1>
+    <p>Hay varios tipos de solicitudes HTTP, cada una con su propósito específico. Aquí tienes los más comunes:</p>
+    <ul>
+        <li><strong>GET:</strong> Se utiliza para solicitar datos de un recurso específico.</li>
+        <li><strong>POST:</strong> Se utiliza para enviar datos al servidor para ser procesados.</li>
+        <li><strong>PUT:</strong> Se utiliza para crear o actualizar un recurso específico.</li>
+        <li><strong>DELETE:</strong> Se utiliza para solicitar al servidor que elimine el recurso especificado.</li>
+        <li><strong>PATCH:</strong> Se utiliza para aplicar modificaciones parciales a un recurso.</li>
+        <li><strong>HEAD:</strong> Se utiliza para obtener solo los encabezados de respuesta de un recurso.</li>
+        <li><strong>OPTIONS:</strong> Se utiliza para determinar qué métodos HTTP son permitidos por el servidor para un
+            recurso específico.</li>
+    </ul>
+</body>
+
+</html>
