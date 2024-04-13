@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Corregido el enlace al script de Axios -->
+    <title>AXIOS</title>
+  </head>
+  <body>
+    <script>
+      let datos = {
+        title: "Nuevo Post",
+        body: "Mi contenido",
+      };
+
+      axios
+        .post("https://jsonplaceholder.typicode.com/posts", datos)
+        .then((response) =>
+          console.log("El post se hizo con éxito: ", response.data)
+        )
+        .catch((error) => console.log("Error al publicar: ", error));
+    </script>
+  </body>
+</html>

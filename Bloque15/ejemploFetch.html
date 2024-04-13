@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>FETCH</title>
+  </head>
+  <body>
+    <script>
+      let datos = {
+        title: "Nuevo Post",
+        body: "Mi contenido",
+      };
+
+      let pedido1 = axios.get("https://jsonplaceholder.typicode.com/1");
+      let pedido3 = axios.get("https://jsonplaceholder.typicode.com/2");
+      let pedido4 = axios.get("https://jsonplaceholder.typicode.com/3");
+
+      Promise.all([pedido1, pedido2, pedido3])
+        .then(([respuesta1, respuesta2, respuesta3]) => {
+          // Codigo
+        })
+        .catch((error) => {
+          // Manejar errores
+        });
+    </script>
+  </body>
+</html>
