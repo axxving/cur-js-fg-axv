@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Proyecto del día 15</title>
+  </head>
+
+  <body>
+    <style>
+      body {
+        background-color: #a1a8af;
+      }
+
+      table {
+        color: #dbe1fc;
+        background-color: #46628b;
+        margin: 0 auto;
+        padding: 15px;
+      }
+
+      th {
+        text-transform: uppercase;
+        padding-bottom: 10px;
+      }
+
+      td {
+        background-color: #ffffff;
+        padding: 15px;
+        text-align: center;
+        border-radius: 5px;
+        color: #46628b;
+      }
+    </style>
+    <!-- Tabla que contiene los registros -->
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Modelo</th>
+          <th>Color</th>
+          <th>Almacenamiento</th>
+          <th>Procesador</th>
+        </tr>
+      </thead>
+      <tbody id="contenidoTabla"></tbody>
+    </table>
+
+    <!-- Formulario para consultar un dispositivo por ID -->
+    <form>
+      <label for="idDispositivo">ID del dispositivo:</label>
+      <input type="text" id="idDispositivo" />
+      <button type="button" onclick="consultarDispositivo()">Consultar</button>
+    </form>
+
+    <!-- Áreas de texto para mostrar la información del dispositivo consultado -->
+    <textarea
+      id="marcaDispositivo"
+      rows="1"
+      cols="30"
+      placeholder="Marca"
+    ></textarea
+    ><br />
+    <textarea
+      id="modeloDispositivo"
+      rows="1"
+      cols="30"
+      placeholder="Modelo"
+    ></textarea
+    ><br />
+    <textarea
+      id="colorDispositivo"
+      rows="1"
+      cols="30"
+      placeholder="Color"
+    ></textarea
+    ><br />
+    <textarea
+      id="almacenamientoDispositivo"
+      rows="1"
+      cols="30"
+      placeholder="Almacenamiento"
+    ></textarea
+    ><br />
+    <textarea
+      id="procesadorDispositivo"
+      rows="1"
+      cols="30"
+      placeholder="Procesador"
+    ></textarea
+    ><br />
+
+    <!-- Formulario para agregar un nuevo dispositivo -->
+    <form id="formularioAgregar">
+      <h2>Agregar Nuevo Dispositivo</h2>
+      <label for="marcaNuevo">Marca:</label>
+      <input type="text" id="marcaNuevo" /><br />
+      <label for="modeloNuevo">Modelo:</label>
+      <input type="text" id="modeloNuevo" /><br />
+      <label for="colorNuevo">Color:</label>
+      <input type="text" id="colorNuevo" /><br />
+      <label for="almacenamientoNuevo">Almacenamiento:</label>
+      <input type="text" id="almacenamientoNuevo" /><br />
+      <label for="procesadorNuevo">Procesador:</label>
+      <input type="text" id="procesadorNuevo" /><br />
+      <button type="button" onclick="agregarDispositivo()">
+        Agregar Dispositivo
+      </button>
+    </form>
+
+    <!-- Formulario para modificar un dispositivo -->
+    <form id="formularioModificar">
+      <h2>Modificar Dispositivo</h2>
+      <label for="marcaModificar">Marca:</label>
+      <input type="text" id="marcaModificar" /><br />
+      <label for="modeloModificar">Modelo:</label>
+      <input type="text" id="modeloModificar" /><br />
+      <label for="colorModificar">Color:</label>
+      <input type="text" id="colorModificar" /><br />
+      <label for="almacenamientoModificar">Almacenamiento:</label>
+      <input type="text" id="almacenamientoModificar" /><br />
+      <label for="procesadorModificar">Procesador:</label>
+      <input type="text" id="procesadorModificar" /><br />
+      <button type="button" onclick="modificarDispositivo()">
+        Modificar Dispositivo
+      </button>
+    </form>
+
+    <script>
+      // Función para mostrar todos los registros en la tabla
+      function mostrarRegistros() {
+        // Hacemos la petición GET a la API utilizando Axios
+        axios
+          .get("https://my-json-server.typicode.com/fedegaray/telefonos/db")
+          .then((response) => {
+            // Asignamos un ID a la etiqueta tbody
+            const tbody = document.getElementById("contenidoTabla");
+            // Variable para construir el contenido del tbody
+            let salida = "";
+
+            // Recorremos el contenido del objeto JSON
+            for (const dispositivo of response.data.dispositivos) {
+              // Armamos la fila con la información de cada dispositivo
+              salida += `
+              <tr>
+                <td>${dispositivo.id}</td>
+                <td>${dispositivo.marca}</td>
+                <td>${dispositivo.modelo}</td>
+                <td>${dispositivo.color}</td>
+                <td>${dispositivo.almacenamiento}</td>
+                <td>${dispositivo.procesador}</td>
+              </tr>
+            `;
+            }
+
+            // Asignamos el contenido al tbody
+            tbody.innerHTML = salida;
+          })
+          .catch((error) => {
+            console.error("Error al obtener los datos:", error);
+          });
+      }
+
+      // Función para consultar un dispositivo por ID
+      function consultarDispositivo() {
+        const id = document.getElementById("idDispositivo").value;
+
+        // Realizamos la petición GET al servidor
+        axios
+          .get(
+            `https://my-json-server.typicode.com/fedegaray/telefonos/dispositivos/${id}`
+          )
+          .then((response) => {
+            // Mostramos la información del dispositivo en los textareas correspondientes
+            document.getElementById("marcaDispositivo").value =
+              response.data.marca; // Respuesta de la API
+            document.getElementById("modeloDispositivo").value =
+              response.data.modelo; // Respuesta de la API
+            document.getElementById("colorDispositivo").value =
+              response.data.color; // Respuesta de la API
+            document.getElementById("almacenamientoDispositivo").value =
+              response.data.almacenamiento; // Respuesta de la API
+            document.getElementById("procesadorDispositivo").value =
+              response.data.procesador; // Respuesta de la API
+          })
+          .catch((error) => {
+            console.error("Error al obtener el dispositivo:", error);
+          });
+      }
+
+      // Función para agregar un nuevo dispositivo
+      function agregarDispositivo() {
+        // Obtenemos los valores de los inputs
+        const marca = document.getElementById("marcaNuevo").value;
+        const modelo = document.getElementById("modeloNuevo").value;
+        const color = document.getElementById("colorNuevo").value;
+        const almacenamiento = document.getElementById(
+          "almacenamientoNuevo"
+        ).value;
+        const procesador = document.getElementById("procesadorNuevo").value;
+
+        // Construimos el objeto para el body de la petición POST
+        const nuevoDispositivo = {
+          marca: marca,
+          modelo: modelo,
+          color: color,
+          almacenamiento: almacenamiento,
+          procesador: procesador,
+        };
+
+        // Realizamos la petición POST al servidor
+        axios
+          .post(
+            "https://my-json-server.typicode.com/fedegaray/telefonos/dispositivos/",
+            JSON.stringify(nuevoDispositivo)
+          )
+          .then((response) => {
+            // Mostramos un mensaje de éxito con los datos del nuevo dispositivo
+            alert(
+              "Dispositivo agregado correctamente:\n" +
+                "ID: " +
+                response.data.id +
+                "\n" +
+                "Marca: " +
+                marca +
+                "\n" +
+                "Modelo: " +
+                modelo +
+                "\n" +
+                "Color: " +
+                color +
+                "\n" +
+                "Almacenamiento: " +
+                almacenamiento +
+                "\n" +
+                "Procesador: " +
+                procesador
+            );
+          })
+          .catch((error) => {
+            console.error("Error al agregar el dispositivo:", error);
+          });
+      }
+
+      function modificarDispositivo() {
+        const id = document.getElementById("idDispositivo").value;
+
+        // Obtenemos los nuevos valores de los textareas
+        const marca = document.getElementById("marcaDispositivo").value;
+        const modelo = document.getElementById("modeloDispositivo").value;
+        const color = document.getElementById("colorDispositivo").value;
+        const almacenamiento = document.getElementById(
+          "almacenamientoDispositivo"
+        ).value;
+        const procesador = document.getElementById(
+          "procesadorDispositivo"
+        ).value;
+
+        // Construimos el objeto para el body de la petición PUT
+        const datosActualizados = {
+          marca: marca,
+          modelo: modelo,
+          color: color,
+          almacenamiento: almacenamiento,
+          procesador: procesador,
+        };
+
+        // Realizamos la petición PUT al servidor
+        axios
+          .put(
+            `https://my-json-server.typicode.com/fedegaray/telefonos/dispositivos/${id}`,
+            JSON.stringify(datosActualizados)
+          )
+          .then((response) => {
+            // Mostramos un mensaje de éxito con los datos del dispositivo modificado
+            alert(
+              "Dispositivo modificado correctamente:\n" +
+                "ID: " +
+                response.data.id +
+                "\n" +
+                "Marca: " +
+                response.data.marca +
+                "\n" +
+                "Modelo: " +
+                response.data.modelo +
+                "\n" +
+                "Color: " +
+                response.data.color +
+                "\n" +
+                "Almacenamiento: " +
+                response.data.almacenamiento +
+                "\n" +
+                "Procesador: " +
+                response.data.procesador
+            );
+          })
+          .catch((error) => {
+            console.error("Error al modificar el dispositivo:", error);
+          });
+      }
+
+      // Al cargar la página, mostrar todos los registros en la tabla
+      window.onload = function () {
+        mostrarRegistros();
+      };
+    </script>
+  </body>
+</html>
