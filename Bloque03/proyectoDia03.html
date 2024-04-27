@@ -120,19 +120,19 @@
 
       <p>¿Cuando es dos mas dos?</p>
 
-      <input type="text" id="pregunta01" />
-      <p>¿Que dia es hoy?</p>
+      <input type="number" id="pregunta01" />
+      <p>¿Cuanto es 5 - 2?</p>
 
-      <input type="text" id="pregunta02" />
-      <p>¿Cuanto es 1000 x 2000</p>
+      <input type="number" id="pregunta02" />
+      <p>¿Cuanto es 15 X 2?</p>
 
-      <input type="text" id="pregunta03" />
-      <p>¿Como se llama tu papa?</p>
+      <input type="number" id="pregunta03" />
+      <p>¿Cuanto es 3 X 3 X 3?</p>
 
-      <input type="text" name="" id="pregunta04" />
+      <input type="number" name="" id="pregunta04" />
 
-      <p>¿A quien mas amas en este mundo?</p>
-      <input type="text" id="pregunta05" />
+      <p>¿Cuanto es 15 X 3?</p>
+      <input type="number" id="pregunta05" />
 
       <div class="container-buttons">
         <button class="volverComenzar" onclick="volverComenzar()">Recet</button>
@@ -159,11 +159,11 @@
         if (tiempoLimite <= 0) {
           alert("El tiempo ya se termino.");
           alert(`Que mal!, aqui estan tus respuestas:
-       01 - ${respuesta01.value},
-       02 - ${respuesta02.value},
-       03 - ${respuesta03.value},
-       04 - ${respuesta04.value},
-       05 - ${respuesta05.value},
+       01 - ${respuesta01},
+       02 - ${respuesta02},
+       03 - ${respuesta03},
+       04 - ${respuesta04},
+       05 - ${respuesta05},
         `);
         } else {
           // El tiempo se va disminuyendo
@@ -181,13 +181,68 @@
       // Funcion que se ejecuta cuando el usaurio termina
       function terminar() {
         cronometro = 0;
+
+        // Array de respuestas
+        let respuestas = [];
+
+        // Obtener los valores de los inputs y agregarlos al array
+        for (let i = 1; i <= 5; i++) {
+          let respuesta = document.getElementById("pregunta0" + i).value;
+          respuestas.push(respuesta);
+        }
+
+        let correcta = "";
+
+        // Verificar cada respuesta
+        for (let i = 0; i < respuestas.length; i++) {
+          switch (i) {
+            case 0:
+              if (respuestas[i] === "4") {
+                valor = "correcta";
+              } else {
+                valor = "incorrecta";
+              }
+              break;
+            case 1:
+              if (respuestas[i] === "3") {
+                valor = "correcta";
+              } else {
+                valor = "incorrecta";
+              }
+              break;
+            case 2:
+              if (respuestas[i] === "30") {
+                valor = "correcta";
+              } else {
+                valor = "incorrecta";
+              }
+              break;
+            case 3:
+              if (respuestas[i] === "27") {
+                valor = "correcta";
+              } else {
+                valor = "incorrecta";
+              }
+              break;
+            case 4:
+              if (respuestas[i] === "45") {
+                valor = "correcta";
+              } else {
+                valor = "incorrecta";
+              }
+              break;
+            default:
+              break;
+          }
+        }
+
         alert(`Bien hecho!, aqui estan tus respuestas:
-       01 - ${respuesta01.value},
-       02 - ${respuesta02.value},
-       03 - ${respuesta03.value},
-       04 - ${respuesta04.value},
-       05 - ${respuesta05.value},
-       La fecha de hoy es: ${tiktak()}
+          01 - ${respuesta01.value}, ${valor},
+          02 - ${respuesta02.value}, ${valor},
+          03 - ${respuesta03.value}, ${valor},
+          04 - ${respuesta04.value}, ${valor},
+          05 - ${respuesta05.value}, ${valor},
+          La fecha de hoy es: ${tiktak()}
         `);
       }
 
