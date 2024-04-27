@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saludar a un usuario por su nombre</title>
+  </head>
+  <body>
+    <h1>Ingresa tu nombre:</h1>
+    <hr />
+    <input type="text" id="nombreUsuario" />
+    <button onclick="saludarUsuario()">Saludame por fa</button>
+    <script>
+      function saludar(nombre) {
+        alert(`Hola, te saludo ${nombre}`);
+      }
+
+      function saludarUsuario() {
+        let nombreUser = document.getElementById("nombreUsuario");
+        let nombreFinal = nombreUser.value;
+
+        saludar(nombreFinal);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temporizador</title>
+  </head>
+  <body>
+    <h1>Define una alarma:</h1>
+    <hr />
+    <input type="number" id="defUser" />
+    <button onclick="definir()">Definir</button>
+
+    <hr />
+
+    <h2 id="mostrar">--</h2>
+    <script>
+      function definir() {
+        let tiempo = document.getElementById("defUser");
+        let tiempoFinal = tiempo.value;
+
+        setTimeout(acaboTiempo, tiempoFinal * 1000);
+      }
+
+      function acaboTiempo() {
+        let mostrar = document.getElementById("mostrar");
+
+        mostrar.textContent = "El tiempo se termino";
+      }
+    </script>
+  </body>
+</html>
