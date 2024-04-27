@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>Ingresa tu nombre:</p>
+    <input type="text" id="ingresoUsuario" placeholder="Ingresa un texto" />
+    <button onclick="ingresar()">Ingresar</button>
+    <h1 id="valorInputHtml">Mostrar Nombre</h1>
+    <script>
+      function ingresar() {
+        let valorInput = document.getElementById("ingresoUsuario");
+        let valorFinal = valorInput.value;
+        let valorInputHtml = document.getElementById("valorInputHtml");
+
+        valorInputHtml.textContent = valorFinal;
+      }
+    </script>
+  </body>
+</html>
