@@ -6,29 +6,140 @@
     <title>Proyecto Dia - 03</title>
   </head>
   <body>
-    <h1>Juego de los 30</h1>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
 
-    <h2 id="cronometroHTML">00</h2>
+      body {
+        background-color: #3f4c59;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
 
-    <p>¿Cuando es dos mas dos?</p>
+      .container {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background-color: #778899;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+      }
 
-    <input type="text" id="pregunta01" /><br />
-    <p>¿Que dia es hoy?</p>
+      h1 {
+        color: #ffffff;
+        text-align: center;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+      }
 
-    <input type="text" id="pregunta02" /><br />
-    <p>¿Cuanto es 1000 x 2000</p>
+      h2 {
+        text-align: center;
+        padding: 10px;
+        border-radius: 5px;
+        font-weight: bolder;
+        background-color: lightblue;
+        display: block;
+        font-size: 2rem;
+        margin-bottom: 15px;
+      }
 
-    <input type="text" id="pregunta03" /><br />
-    <p>¿Como se llama tu papa?</p>
+      p {
+        width: 90%;
+        font-size: 1.2rem;
+        color: #ffffff;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        text-align: start !important;
+      }
 
-    <input type="text" name="" id="pregunta04" /><br />
-    <p>¿A quien mas amas en este mundo?</p>
+      input {
+        padding: 15px;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        width: 90%;
+      }
 
-    <input type="text" id="pregunta05" /><br />
+      .container-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 15px;
+      }
 
-    <button onclick="volverComenzar()">Volver a comenzar</button>
-    <button onclick="comenzar()">Comenzar</button>
-    <button onclick="terminar()">Terminar</button>
+      button {
+        padding: 15px;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        margin: 5px;
+        font-size: 1rem;
+        transition: all ease-in-out 200ms;
+      }
+
+      button:hover {
+        transform: scale(1.1);
+      }
+
+      button:active {
+        background-color: #ffffff;
+      }
+
+      .volverComenzar {
+        background-color: lightblue;
+        color: #00195c;
+        font-weight: bold;
+      }
+      .comenzar {
+        background-color: lightgreen;
+        color: #005c1a;
+        font-weight: bold;
+      }
+
+      .terminar {
+        background-color: lightcoral;
+        color: rgb(115, 1, 1);
+        font-weight: bold;
+      }
+    </style>
+
+    <div class="container">
+      <h1>Juego de los 30</h1>
+
+      <h2 id="cronometroHTML">00</h2>
+
+      <p>¿Cuando es dos mas dos?</p>
+
+      <input type="text" id="pregunta01" />
+      <p>¿Que dia es hoy?</p>
+
+      <input type="text" id="pregunta02" />
+      <p>¿Cuanto es 1000 x 2000</p>
+
+      <input type="text" id="pregunta03" />
+      <p>¿Como se llama tu papa?</p>
+
+      <input type="text" name="" id="pregunta04" />
+
+      <p>¿A quien mas amas en este mundo?</p>
+      <input type="text" id="pregunta05" />
+
+      <div class="container-buttons">
+        <button class="volverComenzar" onclick="volverComenzar()">Recet</button>
+        <button class="comenzar" onclick="comenzar()">Comenzar</button>
+        <button class="terminar" onclick="terminar()">Terminar</button>
+      </div>
+    </div>
 
     <script>
       // Tiempo limite del usuario
@@ -80,6 +191,7 @@
         `);
       }
 
+      // Funcion que da el formato deln tiempo
       function tiktak() {
         // Declaramos la variable que obtiene el tiempo
         let tiempoActual = new Date();
